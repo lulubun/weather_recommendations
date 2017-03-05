@@ -6,6 +6,7 @@ export class Weather extends React.Component {
   render() {
     return(
       <div className="Weather">
+        <p>Hello!</p>
         <Zip />
         <Forecast />
         <Clothes />
