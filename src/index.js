@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Weather from './components/Weather';
+import {Provider} from 'react-redux';
 import './index.css';
 
 document.addEventListener('DOMContentLoaded', () => {
