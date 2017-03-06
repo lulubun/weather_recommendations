@@ -24,7 +24,4 @@ export class Nav extends React.Component {
   }
 }
 
-export default connect(
-  state => ({ q: state.router.location.query.q }),
-  { pushState }
-)(Nav)
+export default Nav

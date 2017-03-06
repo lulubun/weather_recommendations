@@ -11,4 +11,6 @@ export class Zip extends React.Component {
       </div>
     )
   }
-}
+};
+
+export default Zip

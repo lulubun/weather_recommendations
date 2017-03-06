@@ -7,7 +7,6 @@ import weatherState from './weatherState';
 import { combineReducers } from 'redux';
 
 const reducer = combineReducers({
-  router: routerStateReducer,
   weatherState
 });
 

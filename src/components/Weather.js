@@ -13,7 +13,7 @@ export class Weather extends React.Component {
     return(
       <div className="Weather">
         <p>Hello!</p>
-        <Forecast />
+        {/*<Forecast />*/}
         <Zip />
       </div>
     );
