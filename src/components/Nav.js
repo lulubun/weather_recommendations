@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
-import Weather from './Weather'
+import Weather from './Weather';
+import { connect } from 'react-redux';
+import {pushState} from 'redux-react-router';
 
 export class Nav extends React.Component {
   render() {
@@ -22,4 +24,7 @@ export class Nav extends React.Component {
   }
 }
 
-export default Nav
+export default connect(
+  state => ({ q: state.router.location.query.q }),
+  { pushState }
+)(Nav)

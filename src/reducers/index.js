@@ -1,21 +1,14 @@
+import React from 'react';
 import * as actions from '../actions/index';
+import { Provider } from 'react-redux';
+import { reduxReactRouter, routerStateReducer, ReduxRouter, Route, IndexRoute, createHistory } from 'redux-react-router';
+import thunk from 'redux-thunk';
+import weatherState from './weatherState';
+import { combineReducers } from 'redux';
 
-const initialState = {
-  high: 0,
-  low: 0,
-  rain: 0,
-  warnings: '',
-  recommendations: ''
-}
+const reducer = combineReducers({
+  router: routerStateReducer,
+  weatherState
+});
 
-const weather = (state=initialState, action) => {
-  switch (action.type) {
-    case actions.SET_WEATHER:
-    return {...state, high: action.high, low: action.low, rain: action.rain, warnings: action.warnings, recommendations: action.recommendations}
-
-    default:
-    return state
-  };
-}
-
-export default weather
+export default reducer
