@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import Weather from './Weather';
 import { connect } from 'react-redux';
 import {pushState} from 'redux-react-router';
+import '../index.css';
 
 export class Nav extends React.Component {
   render() {

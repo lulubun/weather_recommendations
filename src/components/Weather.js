@@ -12,16 +12,15 @@ export class Weather extends React.Component {
   render() {
     return(
       <div className="Weather">
-        <p>Hello!</p>
-        {/*<Forecast />*/}
+        <Forecast />
         <Zip />
       </div>
     );
   }
 }
 
-const matchDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   startingWeather: () => dispatch(actions.getDecatur())
 })
 
-export default connect(null, matchDispatchToProps)(Weather)
+export default connect(null, mapDispatchToProps)(Weather)
