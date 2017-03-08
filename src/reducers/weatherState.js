@@ -5,7 +5,6 @@ const initialState = {
   high: 0,
   low: 0,
   rain: 0,
-  warnings: '',
   recommendations: ''
 }
 
