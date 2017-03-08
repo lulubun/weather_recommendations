@@ -1,6 +1,7 @@
 import * as actions from '../actions/index';
 
 const initialState = {
+  url: 'GA/Decatur',
   high: 0,
   low: 0,
   rain: 0,
