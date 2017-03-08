@@ -18,7 +18,14 @@ export function getDecatur(decZip) {
     const url = 'http://api.wunderground.com/api/5507ba67bf70f890/hourly/q/GA/Decatur.json'
     fetch(url)
     .then(response => response.json())
-    //.then(data => dispatch(handleRes(data)))
+    .then(if (data) {
+      data.splice(function(item) {
+        const newHigh = item.forecast.simpleforecast.forecastday.high.fahrenheit;
+        const newLow = item.forecast.simpleforecast.forecastday.low.fahrenheit;
+        const newRain = item.forecast.simpleforecast.forecastday.qpf_day.in;
+      })
+    }
+      data => dispatch(handleRes(data)))
     .catch(ex => console.log(ex))
   }
 };
