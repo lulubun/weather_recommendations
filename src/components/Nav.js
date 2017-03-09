@@ -8,10 +8,13 @@ export class Nav extends React.Component {
       <div>
         <nav className="topBar">
           <ul>
-            <li><Link to={'/'}>Workday Weather</Link></li>
-            <li><Link to={'/recommendations'}>What Should I Wear Today?</Link></li>
+            <li><Link to={'/'} className="weatherLink">Workday Weather</Link></li>
+            <li><Link to={'/recommendations'} className="clothesLink">What Should I Wear Today?</Link></li>
           </ul>
         </nav>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     );
   }

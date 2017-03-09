@@ -16,7 +16,7 @@ export class Zip extends React.Component {
           event.target.textbox.value = '';
         }}>
           <input id="textbox" type="text" defaultValue="(ex. 30030)"/>
-          <input type="submit" value="Submit"/>
+          <input id="go" type="submit" value="Go!"/>
         </form>
       </div>
     )

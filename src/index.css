@@ -1,13 +1,69 @@
 body {
-  margin: 0;
-  padding: 0;
+  display: block;
   font-family: sans-serif;
+  background-color: #DCDCDC;
+
 }
 
-#textbox {
-  width: 25%;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-list-style-type: none;
+  display: inline;
+  padding-right: 8px;
+}
+
+#textbox {
+  border-radius: 5px;
+  width: 25%;
+}
+
+.weatherLink {
+  background-color: #DCDCDC;
+  text-decoration: none;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  color: black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+}
+
+.topBar {
+  margin-top: -9px;
+  padding-top: 7px;
+  background-color: white;
+  margin-left: -9px;
+  padding-left: 7px;
+  margin-right: -9px;
+  padding-right: 7px;
+}
+
+#go {
+  border-radius: 5px;
+  background-color: #FFFF99;
+}
+
+.clothesLink {
+  text-decoration: none;
+  background-color: #FFFF99;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  color: black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.Weather {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.clothes {
+  background-color: #FFFF99;
 }
