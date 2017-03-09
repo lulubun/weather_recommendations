@@ -8,19 +8,14 @@ export class Zip extends React.Component {
   render() {
     return (
       <div className="zip">
-        <h4>Enter your location here for your forecast</h4>
+        <h4>Enter your zip code here for your forecast</h4>
         <form onSubmit={(event) => {
           event.preventDefault();
           const zipInput = event.target.textbox.value;
-          const parseState = zipInput.slice(-2);
-          const zipLength = zipInput.length;
-          const citylength = zipLength - 4;
-          const parseCity = zipInput.slice(0, citylength);
-          const urlEnd = parseState + '/' + parseCity;
-          this.props.zipAct(urlEnd)
+          this.props.zipAct(zipInput)
           event.target.textbox.value = '';
         }}>
-          <input id="textbox" type="text" defaultValue="City, State (ex. Dallas, TX)"/>
+          <input id="textbox" type="text" defaultValue="(ex. 30030)"/>
           <input type="submit" value="Submit"/>
         </form>
       </div>
@@ -29,7 +24,7 @@ export class Zip extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  zipAct: (urlEnd) => dispatch(actions.getWeather(urlEnd))
+  zipAct: (zip) => dispatch(actions.getWeather(zip))
 })
 
 export default connect(null, mapDispatchToProps)(Zip);

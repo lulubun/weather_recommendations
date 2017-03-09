@@ -9,15 +9,23 @@ import Nav from './components/Nav';
 import Weather from './components/Weather';
 import Clothes from './components/Clothes';
 
+
 const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={Nav}>
+      <Route path="/" component={Weather}>
         <Route path="/recommendations" component={Clothes} />
       </Route>
     </Router>
   </Provider>,
   document.getElementById('root')
+)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Nav />
+  </Provider>,
+  document.getElementById('nav')
 )

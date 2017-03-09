@@ -1,38 +1,47 @@
-export const SET_WEATHER = 'SET_WEATHER';
-export const setWeather = (forecast) => ({
-  type: SET_WEATHER,
-  forecast
+export const HIGH_TEMP = 'HIGH_TEMP';
+export const highTemp = (newHigh) => ({
+  type: HIGH_TEMP,
+  newHigh
 });
 
-{/*export function handleRes(data) {
-  return dispatch => {
-    const high = parsed_json['forecast']['simpleforecast']['forecastday']['high']['fahrenheit'];
-    const low = parsed_json['forecast']['simpleforecast']['forecastday']['low']['fahrenheit'];
-    const rain = parsed_json['forecast']['simpleforecast']['forecastday']['qpf_day']['in'];
+export const LOW_TEMP = 'LOW_TEMP';
+export const lowTemp = (newLow) => ({
+  type: LOW_TEMP,
+  newLow
+});
 
-  }
-}*/}
+export const SET_RAIN = 'SET_RAIN';
+export const setRain = (newRain) => ({
+  type: SET_RAIN,
+  newRain
+});
 
-export function getDecatur(decZip) {
+export const SET_RECOMMENDATIONS = 'SET_RECOMMENDATIONS';
+export const setRecommendations = (newRec) => ({
+  type: SET_RECOMMENDATIONS,
+  newRec
+});
+
+export function getDecatur() {
   return dispatch => {
-    const url = 'http://api.wunderground.com/api/5507ba67bf70f890/hourly/q/GA/Decatur.json'
+    const url = 'api.openweathermap.org/data/2.5/forecast?id=4191124&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
     fetch(url)
     .then(response => response.json())
-    .then(if (data) {
-      data.splice(function(item) {
-        const newHigh = item.forecast.simpleforecast.forecastday.high.fahrenheit;
-        const newLow = item.forecast.simpleforecast.forecastday.low.fahrenheit;
-        const newRain = item.forecast.simpleforecast.forecastday.qpf_day.in;
-      })
-    }
-      data => dispatch(handleRes(data)))
+    .then(data => {
+      const newHigh = data.main.temp_max;
+      newHigh => dispatch(highTemp(newHigh));
+      const newLow = data.main.temp_min;
+      newLow => dispatch(lowTemp(newLow));
+      const newRain = data.weather.description;
+      newRain => dispatch(setRain(newRain));
+    })
     .catch(ex => console.log(ex))
   }
 };
 
-export function getWeather(urlEnd) {
+export function getWeather(zip) {
   return dispatch => {
-    const url = 'http://api.wunderground.com/api/5507ba67bf70f890/hourly/q/' + {urlEnd} + '.json'
+    const url = 'api.openweathermap.org/data/2.5/forecast?zip=' + {zip} + '&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
     fetch(url)
     .then(response => response.json())
     //.then(data => dispatch(handleRes(data)))
