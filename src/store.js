@@ -1,14 +1,16 @@
-import React from 'react';
+//import React from 'react';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import reducer from './reducers/index';
+import weatherState from './reducers/weatherState';
 import thunk from 'redux-thunk';
 import { routerReducer } from 'react-router-redux';
 
+const stuff = combineReducers({
+  ...weatherState,
+  routing: routerReducer
+});
+
 const store = createStore(
-  combineReducers({
-    ...reducer,
-    routing: routerReducer
-  }),
+  stuff,
   applyMiddleware(thunk)
 );
 

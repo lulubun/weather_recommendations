@@ -1,5 +1,3 @@
-import * as actions from '../actions/index';
-
 const initialState = {
   url: '',
   high: 0,
@@ -10,21 +8,36 @@ const initialState = {
 
 const weatherState = (state=initialState, action) => {
   switch (action.type) {
-    case actions.highTemp:
-    return {...state, high: action.high}
+    case 'HIGH_TEMP':
+    const freshHigh = action.high;
+    return {
+      ...state,
+      high: freshHigh
+    };
 
-    case actions.lowTemp:
-    return {...state, low:action.low}
+    case 'LOW_TEMP':
+    const freshLow = action.low;
+    return {
+      ...state,
+      low:freshLow
+    };
 
-    case actions.setRain:
-    return {...state, rain:action.rain}
+    case 'SET_RAIN':
+    const freshRain = action.rain;
+    return {
+      ...state,
+      rain: freshRain}
 
-    case actions.setRecommendations:
-    return {...state, recommendations: action.recommendations}
+    case 'SET_RECOMMENDATIONS':
+    const freshRecs = action.recommendations;
+    return {
+      ...state,
+      recommendations: freshRecs
+    };
 
     default:
     return state
-  };
+  }
 }
 
 export default weatherState

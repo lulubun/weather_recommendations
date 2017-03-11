@@ -1,34 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../actions/index';
 
 export class Forecast extends React.Component {
-
-  componentDidMount() {
-    this.props.decatur()
-  }
-
   render() {
     return (
       <div className="forecast">
-        <h6>Today's High:</h6> {this.props.dayHigh}
-        <h6>Today's Low:</h6> {this.props.dayLow}
-        <h6>Chance of Rain:</h6> {this.props.dayRain}
-        <h6>Weather Alerts:</h6> {this.props.dayWarnings}
+        <h6>Today's High: {this.props.dayHigh} </h6>
+        <h6>Today's Low: {this.props.dayLow} </h6>
+        <h6>Chance of Rain: {this.props.dayRain} </h6>
+        <h6>Weather Alerts:  {this.props.dayWarnings}</h6>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  dayHigh: state.weatherState.high,
-  dayLow: state.weatherState.low,
-  dayRain: state.weatherState.rain,
-  dayWarnings: state.weatherState.warnings,
-})
+const mapStateToProps = (state, props) => {
+  console.log(state.high);
+  //dayHigh: state.high;
+  //dayLow: state.low;
+  //dayRain: state.rain;
+  //dayWarnings: state.warnings
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  decatur: () => dispatch(actions.getDecatur()),
-})
-
-export default connect(null, mapDispatchToProps)(Forecast)
+export default connect(mapStateToProps)(Forecast);

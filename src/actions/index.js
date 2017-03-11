@@ -22,18 +22,19 @@ export const setRecommendations = (newRec) => ({
   newRec
 });
 
+
 export function getDecatur() {
   return dispatch => {
-    const url = 'api.openweathermap.org/data/2.5/forecast?id=4191124&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
+    const url = 'http://api.openweathermap.org/data/2.5/forecast?id=4191124&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      const newHigh = data.main.temp_max;
-      newHigh => dispatch(highTemp(newHigh));
-      const newLow = data.main.temp_min;
-      newLow => dispatch(lowTemp(newLow));
-      const newRain = data.weather.description;
-      newRain => dispatch(setRain(newRain));
+      const first = data.list[0];
+      const newHigh = first.main.temp_max;
+      function setHigh(newHigh) {
+        dispatch(highTemp(newHigh))
+      };
+      setHigh(newHigh);
     })
     .catch(ex => console.log(ex))
   }
@@ -41,7 +42,7 @@ export function getDecatur() {
 
 export function getWeather(zip) {
   return dispatch => {
-    const url = 'api.openweathermap.org/data/2.5/forecast?zip=' + {zip} + '&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
+    const url = 'http://api.openweathermap.org/data/2.5/forecast?zip=' + {zip} + '&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
     fetch(url)
     .then(response => response.json())
     //.then(data => dispatch(handleRes(data)))
