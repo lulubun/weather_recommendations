@@ -1,0 +1,21 @@
+if (high - low > 20) {
+  recommendations = 'layers, the weather is going to change'
+
+} else if (high > 85) {
+  recommendations = 'a swimsuit, if you are outside you should be in the pool'
+
+} else if (low < 20) {
+  recommendations = 'a puffy coat, gloves, hat, scarf, basically every warm thing you own'
+
+} else if (high > 80) {
+  recommendations = 'light clothes for a Hot day'
+
+} else if (high < 55) {
+  recommendations = 'warm clothes for cold weather'
+
+} else if (low < 55 && high > 78) {
+  recommendations = 'layers, be ready for a BEAUTIFUL day!'
+
+} else if (rain > 30%) {
+  recommendations = 'a raincoat'
+}

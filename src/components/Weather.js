@@ -7,7 +7,7 @@ import Forecast from './Forecast';
 export class Weather extends React.Component {
   componentDidMount() {
     this.props.startingWeather()
-  }
+  };
 
   render() {
     return(
