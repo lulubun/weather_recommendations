@@ -29,12 +29,12 @@ export function getDecatur() {
     fetch(url)
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       const first = data.list[0];
       const newHigh = first.main.temp_max;
-      function setHigh(newHigh) {
-        dispatch(highTemp(newHigh))
-      };
-      setHigh(newHigh);
+      dispatch(highTemp(newHigh));
+      const newLow = first.main.temp_min;
+      dispatch(lowTemp(newLow));
     })
     .catch(ex => console.log(ex))
   }
