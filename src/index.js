@@ -16,10 +16,21 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 
+const logger = store => next => action => {
+  console.group(action.type)
+  console.info('dispatching', action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  console.groupEnd(action.type)
+  return result
+}
+
 const store = createStore(
   reducer,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, logger)
 );
+
+console.log(store.getState());
 
 const history = syncHistoryWithStore(browserHistory, store)
 

@@ -14,12 +14,11 @@ export class Forecast extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  console.log(state.high);
-  //dayHigh: state.high;
+const mapStateToProps = (state, props) => ({
+  dayHigh: state.high
   //dayLow: state.low;
   //dayRain: state.rain;
   //dayWarnings: state.warnings
-};
+});
 
 export default connect(mapStateToProps)(Forecast);
