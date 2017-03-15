@@ -12,7 +12,7 @@ import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 
 const reducer = combineReducers({
-  ...weatherState,
+  weatherState,
   routing: routerReducer
 })
 
@@ -27,6 +27,7 @@ const logger = store => next => action => {
 
 const store = createStore(
   reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk, logger)
 );
 

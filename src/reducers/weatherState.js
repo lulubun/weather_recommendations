@@ -2,34 +2,31 @@ const initialState = {
   url: '',
   high: 0,
   low: 0,
-  rain: 'Rain is happeneing',
+  rain: 'Rain is here',
   recommendations: ''
 }
 
 const weatherState = (state=initialState, action) => {
   switch (action.type) {
-    case 'HIGH_TEMP':
-    const freshHigh = action.high;
+    case 'SET_TEMP':
     return {
       ...state,
-      high: freshHigh
-    };
-
-    case 'LOW_TEMP':
-    const freshLow = action.low;
-    return {
-      ...state,
-      low:freshLow
+      high: action.newHigh,
+      low: action.newLow
     };
 
     case 'SET_RAIN':
-    const freshRain = action.rain;
     return {
       ...state,
-      rain: freshRain}
+      rain: action.freshRain}
 
     case 'SET_RECOMMENDATIONS':
-    const freshRecs = action.recommendations;
+    let freshRecs = '';
+    if (state.high - state.low > 20) {
+      freshRecs = 'layers, the weather is going to change'
+    } else {
+      freshRecs = 'Yo mama'
+    }
     return {
       ...state,
       recommendations: freshRecs

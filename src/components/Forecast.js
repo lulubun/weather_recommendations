@@ -15,10 +15,10 @@ export class Forecast extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  dayHigh: state.high
-  //dayLow: state.low;
-  //dayRain: state.rain;
-  //dayWarnings: state.warnings
+  dayHigh: state.weatherState.high,
+  dayLow: state.weatherState.low,
+  dayRain: state.weatherState.rain,
+  dayWarnings: state.weatherState.warnings
 });
 
 export default connect(mapStateToProps)(Forecast);
