@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 import Nav from './components/Nav';
+import Welcome from './components/Welcome';
 import Weather from './components/Weather';
 import Clothes from './components/Clothes';
 import weatherState from './reducers/weatherState';
@@ -39,7 +40,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={Nav}>
-        <IndexRoute component={Weather} />
+        <IndexRoute component={Welcome} />
+        <Route path="/weather" component={Weather} />
         <Route path="/recommendations" component={Clothes} />
       </Route>
     </Router>

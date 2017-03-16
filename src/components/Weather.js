@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 import Zip from './Zip';
 import Forecast from './Forecast';
+import '../index.css';
 
 export class Weather extends React.Component {
   componentDidMount() {
-    this.props.startingWeather()
+    this.props.startingWeather(30030)
   };
 
   render() {
@@ -20,7 +21,7 @@ export class Weather extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startingWeather: () => dispatch(actions.getDecatur())
+  startingWeather: () => dispatch(actions.getWeather(30030))
 })
 
 export default connect(null, mapDispatchToProps)(Weather)

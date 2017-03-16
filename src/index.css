@@ -1,7 +1,7 @@
 body {
   display: block;
   font-family: sans-serif;
-  background-color: #DCDCDC;
+  font-size: 18px;
 
 }
 
@@ -62,8 +62,13 @@ li {
 .Weather {
   padding-left: 5px;
   padding-top: 5px;
+  background-color: #DCDCDC;
 }
 
 .clothes {
   background-color: #FFFF99;
+}
+
+#sidebar {
+  font-size: 10px;
 }

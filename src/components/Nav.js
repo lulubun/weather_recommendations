@@ -8,7 +8,8 @@ export class Nav extends React.Component {
       <div>
         <nav className="topBar">
           <ul>
-            <li><Link to={'/'} className="weatherLink">Workday Weather</Link></li>
+            <li><Link to={'/'} className="welcomeLink">Welcome</Link></li>
+            <li><Link to={'/weather'} className="weatherLink">Workday Weather</Link></li>
             <li><Link to={'/recommendations'} className="clothesLink">What Should I Wear Today?</Link></li>
           </ul>
         </nav>

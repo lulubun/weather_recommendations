@@ -15,7 +15,7 @@ export class Zip extends React.Component {
           this.props.zipAct(zipInput)
           event.target.textbox.value = '';
         }}>
-          <input id="textbox" type="text" defaultValue="(ex. 30030)"/>
+          <input name="textbox" id="textbox" type="text" placeholder="(ex 30030)"/>
           <input id="go" type="submit" value="Go!"/>
         </form>
       </div>
