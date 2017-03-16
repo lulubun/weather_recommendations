@@ -1,22 +1,43 @@
 import React from 'react';
 import {Link} from 'react-router';
-import '../index.css';
+import {Tab, Tabs} from 'material-ui/Tabs';
+import Welcome from '../components/Welcome';
+import Weather from '../components/Weather';
+import Clothes from '../components/Clothes';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+
+const AllTabs = () => (
+  <Tabs>
+    <Tab
+      label="Welcome"
+      data-route="/"
+    >
+    <Welcome />
+    </Tab>
+    <Tab
+      label="Weather"
+      data-route="/weather"
+    >
+      <div>
+      <Weather />
+    </div>
+    </Tab>
+    <Tab label="What should I wear today?" >
+      <div>
+        <Clothes />
+      </div>
+    </Tab>
+  </Tabs>
+)
 
 export class Nav extends React.Component {
   render() {
     return(
-      <div>
-        <nav className="topBar">
-          <ul>
-            <li><Link to={'/'} className="welcomeLink">Welcome</Link></li>
-            <li><Link to={'/weather'} className="weatherLink">Workday Weather</Link></li>
-            <li><Link to={'/recommendations'} className="clothesLink">What Should I Wear Today?</Link></li>
-          </ul>
-        </nav>
         <div>
-          {this.props.children}
+          <AllTabs />
         </div>
-      </div>
     );
   }
 }

@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 import Zip from './Zip';
 import Forecast from './Forecast';
-import '../index.css';
 
 export class Weather extends React.Component {
   componentDidMount() {

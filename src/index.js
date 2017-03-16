@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import {Provider} from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { Route, Router, IndexRoute, browserHistory } from 'react-router';
@@ -11,6 +10,7 @@ import Clothes from './components/Clothes';
 import weatherState from './reducers/weatherState';
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 const reducer = combineReducers({
   weatherState,
@@ -32,19 +32,23 @@ const store = createStore(
   applyMiddleware(thunk, logger)
 );
 
-console.log(store.getState());
-
 const history = syncHistoryWithStore(browserHistory, store)
 
+const App = () => (
+  <MuiThemeProvider>
+    <Provider store={store}>
+      <Router history={history}>
+        <Route path="/" component={Nav}>
+          <IndexRoute component={Welcome} />
+          <Route path="/weather" component={Weather} />
+          <Route path="/recommendations" component={Clothes} />
+        </Route>
+      </Router>
+    </Provider>
+  </MuiThemeProvider>
+);
+
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={Nav}>
-        <IndexRoute component={Welcome} />
-        <Route path="/weather" component={Weather} />
-        <Route path="/recommendations" component={Clothes} />
-      </Route>
-    </Router>
-  </Provider>,
+  <App />,
   document.getElementById('root')
 )
