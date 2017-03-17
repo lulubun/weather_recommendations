@@ -1,7 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
 import {Tab, Tabs} from 'material-ui/Tabs';
-import Welcome from '../components/Welcome';
 import Weather from '../components/Weather';
 import Clothes from '../components/Clothes';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -10,12 +8,6 @@ injectTapEventPlugin();
 
 const AllTabs = () => (
   <Tabs>
-    <Tab
-      label="Welcome"
-      data-route="/"
-    >
-    <Welcome />
-    </Tab>
     <Tab
       label="Weather"
       data-route="/weather"

@@ -78,11 +78,11 @@ export function getWeather(zip) {
     })
     .catch(ex => console.log(ex))
 
-    const urlSec = 'http://api.wunderground.com/api/5507ba67bf70f890/conditions/q/' + zip + '.json'
+    const urlSec = 'http://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json'
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
-      const newRain = data.current_observation.precip_1hr_in;
+      const newRain = data.forecast[0].pop;
       dispatch(setRain(newRain));
     })
     .catch(ex => console.log(ex))

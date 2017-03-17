@@ -38,10 +38,8 @@ const App = () => (
   <MuiThemeProvider>
     <Provider store={store}>
       <Router history={history}>
-        <Route path="/" component={Nav}>
-          <IndexRoute component={Welcome} />
-          <Route path="/weather" component={Weather} />
-          <Route path="/recommendations" component={Clothes} />
+        <Route path="/" component={Welcome}>
+          <Route path="/weather" component={Nav} />
         </Route>
       </Router>
     </Provider>
