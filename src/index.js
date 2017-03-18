@@ -4,9 +4,8 @@ import {Provider} from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 import Nav from './components/Nav';
+import Control from './components/Control';
 import Welcome from './components/Welcome';
-import Weather from './components/Weather';
-import Clothes from './components/Clothes';
 import weatherState from './reducers/weatherState';
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
@@ -34,11 +33,13 @@ const store = createStore(
 
 const history = syncHistoryWithStore(browserHistory, store)
 
-const App = () => (
+const Start = () => (
   <MuiThemeProvider>
     <Provider store={store}>
       <Router history={history}>
-        <Route path="/" component={Welcome}>
+        <Route path="/" component={Control}>
+          <IndexRoute component={Welcome} />
+          <Route path="/welcome" component={Welcome} />
           <Route path="/weather" component={Nav} />
         </Route>
       </Router>
@@ -47,6 +48,6 @@ const App = () => (
 );
 
 ReactDOM.render(
-  <App />,
+  <Start />,
   document.getElementById('root')
 )
