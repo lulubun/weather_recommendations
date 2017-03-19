@@ -7,12 +7,14 @@ import Nav from './components/Nav';
 import Control from './components/Control';
 import Welcome from './components/Welcome';
 import weatherState from './reducers/weatherState';
+import WeekState from './reducers/weekState';
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 const reducer = combineReducers({
   weatherState,
+  WeekState,
   routing: routerReducer
 })
 

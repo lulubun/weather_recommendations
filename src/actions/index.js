@@ -104,3 +104,5 @@ export function getWeather(zip) {
     })
   }
 };
+
+const urlWeek = ''
