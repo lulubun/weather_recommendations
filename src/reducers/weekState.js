@@ -1,5 +1,4 @@
 const initialState = {
-  url: '',
   day1: 'day 1',
   day2: '',
   day3: '',
@@ -13,19 +12,17 @@ const WeekState = (state=initialState, action) => {
     case 'SET_DAY':
       return {
         ...state,
-        day1: action.dayOne,
-        day2: action.dayTwo,
-        day3: action.dayThree
+        day1: action.dayFirst,
+        day2: action.daySecond,
+        day3: action.dayThird
       };
     case 'SET_TXT_WE':
       return {
         ...state,
-        day1for: action.dayOneFor,
-        day2for: action.dayTwoFor,
-        day3for: action.dayThreeFor
+        day1for: action.day1txt,
+        day2for: action.day2txt,
+        day3for: action.day3txt
       }
-
-      break;
 
     default:
     return state

@@ -12,6 +12,7 @@ export class Zip extends React.Component {
           event.preventDefault();
           const zipInput = event.target.textbox.value;
           this.props.zipAct(zipInput)
+          this.props.storeZip(zipInput)
           event.target.textbox.value = '';
         }}>
           <input name="textbox" id="textbox" type="text" placeholder="(ex 30030)"/>
@@ -23,7 +24,9 @@ export class Zip extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  zipAct: (zip) => dispatch(actions.getWeather(zip))
+  zipAct: (zip) => dispatch(actions.getWeather(zip)),
+
+  storeZip: (zipInput) => dispatch(actions.setUrl(zipInput))
 })
 
 export default connect(null, mapDispatchToProps)(Zip);

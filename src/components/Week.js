@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import {connect} from 'react-redux';
+import * as actions from '../actions/index';
 
 
 export class Week extends React.Component {
@@ -34,7 +35,12 @@ const mapStateToProps = (state, props) => ({
   dayTrois: state.WeekState.day3,
   dayUneFor: state.WeekState.day1for,
   dayDeuxFor: state.WeekState.day2for,
-  dayTroisFor: state.WeekState.day3for
+  dayTroisFor: state.WeekState.day3for,
+  zipNow: state.weatherState.url
 });
 
-export default connect(mapStateToProps)(Week);
+const mapDispatchToProps = (dispatch) => ({
+  getWeek: () => dispatch(actions.getWeek())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Week);

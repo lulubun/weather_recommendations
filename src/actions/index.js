@@ -23,6 +23,22 @@ export const setRecommendations = (newRec) => ({
   newRec
 });
 
+export const SET_DAY = 'SET_DAY';
+export const setDay = (dayFirst, daySecond, dayThird) => ({
+  type: SET_DAY,
+  dayFirst,
+  daySecond,
+  dayThird
+});
+
+export const SET_TXT_WE = 'SET_TXT_WE';
+export const setWeekTxt = (day1txt, day2txt, day3txt) => ({
+  type: SET_TXT_WE,
+  day1txt,
+  day2txt,
+  day3txt
+})
+
 export function getWeather(zip) {
   return dispatch => {
     console.log('started');
@@ -87,7 +103,7 @@ export function getWeather(zip) {
     })
     .catch(ex => console.log(ex))
 
-    const urlThi = 'http://api.wunderground.com/api/5507ba67bf70f890/alerts/q/' + zip + '.json'
+    const urlThi = 'http://api.wunderground.com/api/5507ba67bf70f890/alerts/q/' + zip + '.json';
     fetch(urlThi)
     .then(response => response.json())
     .then(data => {
@@ -102,7 +118,19 @@ export function getWeather(zip) {
       }}
       dispatch(setWarn(newWarn));
     })
+
+    const urlWeek = 'http://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json';
+    fetch(urlWeek)
+    .then(response => response.json())
+    .then(data => {
+      const dayFirst = data.forecast.txt_forecast.forecastday[2].title;
+      const day1txt = data.forecast.txt_forecast.forecastday[2].fcttext;
+      const daySecond = data.forecast.txt_forecast.forecastday[4].title;
+      const day2txt = data.forecast.txt_forecast.forecastday[4].fcttext;
+      const dayThird = data.forecast.txt_forecast.forecastday[6].title;
+      const day3txt = data.forecast.txt_forecast.forecastday[6].fcttext;
+      dispatch(setDay(dayFirst, daySecond, dayThird));
+      dispatch(setWeekTxt(day1txt, day2txt, day3txt));
+    })
   }
 };
-
-const urlWeek = ''

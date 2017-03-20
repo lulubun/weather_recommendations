@@ -1,5 +1,5 @@
 const initialState = {
-  url: '',
+  url: 30030,
   high: 0,
   low: 0,
   rain: 0,
