@@ -11,6 +11,12 @@ export const setRain = (newRain) => ({
   newRain
 });
 
+export const SET_TODAY ='SET_TODAY';
+export const setToday = (jour) => ({
+  type: SET_TODAY,
+  jour
+});
+
 export const SET_WARN = 'SET_WARN';
 export const setWarn = (newWarn) => ({
   type: SET_WARN,
@@ -18,9 +24,13 @@ export const setWarn = (newWarn) => ({
 })
 
 export const SET_RECOMMENDATIONS = 'SET_RECOMMENDATIONS';
-export const setRecommendations = (newRec) => ({
-  type: SET_RECOMMENDATIONS,
-  newRec
+export const setRecommendations = () => ({
+  type: SET_RECOMMENDATIONS
+});
+
+export const SET_SEA = 'SET_SEA';
+export const setSea = () => ({
+  type: SET_SEA
 });
 
 export const SET_DAY = 'SET_DAY';
@@ -41,7 +51,6 @@ export const setWeekTxt = (day1txt, day2txt, day3txt) => ({
 
 export function getWeather(zip) {
   return dispatch => {
-    console.log('started');
     const url = 'http://api.openweathermap.org/data/2.5/forecast?zip=' + zip + '&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
     fetch(url)
     .then(response => response.json())
@@ -98,8 +107,20 @@ export function getWeather(zip) {
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
-      const newRain = data.forecast[0].pop;
+      let jour = '';
+      let time = new Date();
+      let hour = time.getHours();
+      let newRain = '';
+      if (0 <= hour <= 18) {
+        jour = data.forecast.txt_forecast.forecastday[0].title;
+        newRain = data.forecast.txt_forecast.forecastday[0].pop;
+      } else {
+        jour = data.forecast.txt_forecast.forecastday[2].title;
+        newRain = data.forecast.txt_forecast.forecastday[2].pop;
+      }
       dispatch(setRain(newRain));
+      dispatch(setToday(jour));
+      dispatch(setRecommendations())
     })
     .catch(ex => console.log(ex))
 
@@ -107,7 +128,7 @@ export function getWeather(zip) {
     fetch(urlThi)
     .then(response => response.json())
     .then(data => {
-      let newWarn = 'No alert today';
+      let newWarn = 'No alerts for today';
       if (data.alerts[0]) {
       newWarn = data.alerts[0].message;
       if(data.alerts[1]) {
@@ -132,5 +153,6 @@ export function getWeather(zip) {
       dispatch(setDay(dayFirst, daySecond, dayThird));
       dispatch(setWeekTxt(day1txt, day2txt, day3txt));
     })
+
   }
 };

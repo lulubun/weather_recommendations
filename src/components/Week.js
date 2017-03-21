@@ -11,7 +11,7 @@ export class Week extends React.Component {
         <Table>
           <TableBody displayRowCheckbox={false}>
             <TableRow>
-              <TableRowColumn>{this.props.dayUne}</TableRowColumn>
+              <TableRowColumn style={{width: '10%'}}>{this.props.dayUne}</TableRowColumn>
               <TableRowColumn>{this.props.dayUneFor}</TableRowColumn>
             </TableRow>
             <TableRow>
@@ -36,7 +36,6 @@ const mapStateToProps = (state, props) => ({
   dayUneFor: state.WeekState.day1for,
   dayDeuxFor: state.WeekState.day2for,
   dayTroisFor: state.WeekState.day3for,
-  zipNow: state.weatherState.url
 });
 
 const mapDispatchToProps = (dispatch) => ({

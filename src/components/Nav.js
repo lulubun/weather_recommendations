@@ -22,7 +22,7 @@ const AllTabs = () => (
         <Week />
       </div>
     </Tab>
-    <Tab label="What should I wear today?" >
+    <Tab label="Prepare">
       <div>
         <Clothes />
       </div>

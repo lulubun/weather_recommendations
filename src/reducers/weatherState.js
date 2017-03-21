@@ -1,10 +1,12 @@
 const initialState = {
+  today: 'Today',
   url: 30030,
   high: 0,
   low: 0,
   rain: 0,
   weatherAlerts: 'No alerts today',
-  recommendations: ''
+  recommendations: '',
+  season: ''
 }
 
 const weatherState = (state=initialState, action) => {
@@ -22,17 +24,41 @@ const weatherState = (state=initialState, action) => {
       rain: action.newRain
     };
 
+    case 'SET_TODAY':
+    return {
+      ...state,
+      today: action.jour
+    };
+
     case 'SET_WARN':
     return {
       ...state,
       weatherAlerts: action.newWarn
     };
 
+    case 'SET_SEA':
+    let date = new Date();
+    let month = date.getMonth();
+    let newSea = ''
+    if (2 <= month < 5) {
+      newSea = 'spring';
+    } else if (5 <= month < 9) {
+      newSea = 'summer';
+    } else if (9 <= month <= 12) {
+      newSea = 'fall';
+    } else {
+      newSea = 'winter'
+    }
+    return {
+      ...state,
+      season: newSea;
+    }
+
     case 'SET_RECOMMENDATIONS':
     let freshRecs = '';
-    if (state.rain > 5) {
+    if (state.rain > 75) {
       freshRecs = 'You will need an umbrella, rain coat, galoshes, and maybe a boat'
-    } else if (state.rain > 2) {
+    } else if (state.rain > 30) {
       freshRecs = 'Bring an umbrella, just in case '
     } else if (state.high - state.low > 20) {
       freshRecs = 'Wear layers, the weather is going to change'
@@ -61,6 +87,7 @@ const weatherState = (state=initialState, action) => {
       ...state,
       recommendations: freshRecs
     };
+
 
     default:
     return state
