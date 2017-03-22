@@ -21,7 +21,7 @@ export class Weather extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startingWeather: () => dispatch(actions.getWeather(30030));
+  startingWeather: () => dispatch(actions.getWeather(30030)),
   getSeason: () => dispatch(actions.setSea())
 })
 

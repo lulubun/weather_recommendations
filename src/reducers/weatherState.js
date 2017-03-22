@@ -51,8 +51,8 @@ const weatherState = (state=initialState, action) => {
     }
     return {
       ...state,
-      season: newSea;
-    }
+      season: newSea
+    };
 
     case 'SET_RECOMMENDATIONS':
     let freshRecs = '';
