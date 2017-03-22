@@ -51,55 +51,43 @@ export const setWeekTxt = (day1txt, day2txt, day3txt) => ({
 
 export function getWeather(zip) {
   return dispatch => {
-    const url = 'https://api.openweathermap.org/data/2.5/forecast?zip=' + zip + '&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
+    const url = 'https://api.wunderground.com/api/5507ba67bf70f890/hourly/q/' + zip + '.json'
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      let newHigh = 0;
       let newLow = 100;
-      let highArr = [];
       let lowArr = [];
-      for (var l = 0; l < data.list.length; l++) {
-       highArr.push(data.list[l].main.temp_max);
-       lowArr.push(data.list[l].main.temp_min)
-      }
-
-      if (data.list[0].dt_txt.slice(11) === '00:00:00') {
-        highArr = highArr.slice(3, 7);
-        lowArr = lowArr.slice(3, 7);
-      } else if (data.list[0].dt_txt.slice(11) === '03:00:00') {
-        highArr = highArr.slice(2, 6);
-        lowArr = lowArr.slice(2, 6);
-      } else if (data.list[0].dt_txt.slice(11) === '06:00:00') {
-        highArr = highArr.slice(1, 5);
-        lowArr = lowArr.slice(1, 5);
-      } else if (data.list[0].dt_txt.slice(11) === '09:00:00') {
-        highArr = highArr.slice(0, 4);
-        lowArr = lowArr.slice(0, 4);
-      } else if (data.list[0].dt_txt.slice(11) === '12:00:00') {
-        highArr = highArr.slice(0, 3);
-        lowArr = lowArr.slice(0, 3);
-      } else if (data.list[0].dt_txt.slice(11) === '15:00:00') {
-        highArr = highArr.slice(0, 2);
-        lowArr = lowArr.slice(0, 2);
-      } else if (data.list[0].dt_txt.slice(11) === '18:00:00') {
-        highArr = highArr.slice(0, 1);
-        lowArr = lowArr.slice(0, 1);
-      } else if (data.list[0].dt_txt.slice(11) === '21:00:00') {
-        highArr = highArr.slice(4, 8);
-        lowArr = lowArr.slice(4, 8);
-      }
-      for (var m = 0; m < highArr.length; m++) {
-        if (highArr[m] > newHigh) {
-          newHigh = highArr[m];
+      if (data.hourly_forecast[0].FCTTIME.hour === '0') {
+        for (var i = 8; i < 18; i++) {
+          lowArr.push(data.hourly_forecast[i].temp.english)
+        }
+      } else if (data.hourly_forecast[0].FCTTIME.hour === '1') {
+        for (var j = 9; j < 19; j++) {
+          lowArr.push(data.hourly_forecast[j].temp.english)
+        }
+      } else if (data.hourly_forecast[0].FCTTIME.hour === '2') {
+        for (var k = 10; k < 20; k++) {
+          lowArr.push(data.hourly_forecast[k].temp.english)
+        }
+      } else if (data.hourly_forecast[0].FCTTIME.hour === '3') {
+        for (var l = 11; l < 21; l++) {
+          lowArr.push(data.hourly_forecast[l].temp.english)
+        }
+      } else if (data.hourly_forecast[0].FCTTIME.hour === '4') {
+        for (var m = 12; m < 22; m++) {
+          lowArr.push(data.hourly_forecast[m].temp.english)
+        }
+      } else if (data.hourly_forecast[0].FCTTIME.hour === '5') {
+        for (var n = 13; n < 23; n++) {
+          lowArr.push(data.hourly_forecast[n].temp.english)
         }
       }
-      for (var n = 0; n < lowArr.length; n++) {
-        if (lowArr[n] < newLow) {
-          newLow = lowArr[n];
+      for (var x = 0; x < lowArr.length; x++) {
+        if (lowArr[x] < newLow) {
+          newLow = lowArr[x]
         }
       }
-      dispatch(setTemp(newHigh, newLow));
+      dispatch(setTemp(newLow))
     })
     .catch(ex => console.log(ex))
 
@@ -111,16 +99,28 @@ export function getWeather(zip) {
       let time = new Date();
       let hour = time.getHours();
       let newRain = '';
+      let newHigh = 0;
       if (0 <= hour <= 18) {
         jour = data.forecast.txt_forecast.forecastday[0].title;
         newRain = data.forecast.txt_forecast.forecastday[0].pop;
+        newHigh = data.forecast.simpleforecast.forecastday[1].high.fahrenheit;
       } else {
         jour = data.forecast.txt_forecast.forecastday[2].title;
         newRain = data.forecast.txt_forecast.forecastday[2].pop;
+        newHigh = data.forecast.simpleforecast.forecastday[2].high.fahrenheit;
       }
+      const dayFirst = data.forecast.txt_forecast.forecastday[2].title;
+      const day1txt = data.forecast.txt_forecast.forecastday[2].fcttext;
+      const daySecond = data.forecast.txt_forecast.forecastday[4].title;
+      const day2txt = data.forecast.txt_forecast.forecastday[4].fcttext;
+      const dayThird = data.forecast.txt_forecast.forecastday[6].title;
+      const day3txt = data.forecast.txt_forecast.forecastday[6].fcttext;
+      dispatch(setDay(dayFirst, daySecond, dayThird));
+      dispatch(setWeekTxt(day1txt, day2txt, day3txt));
       dispatch(setRain(newRain));
       dispatch(setToday(jour));
       dispatch(setRecommendations())
+      dispatch(setTemp(newHigh))
     })
     .catch(ex => console.log(ex))
 
@@ -144,14 +144,7 @@ export function getWeather(zip) {
     fetch(urlWeek)
     .then(response => response.json())
     .then(data => {
-      const dayFirst = data.forecast.txt_forecast.forecastday[2].title;
-      const day1txt = data.forecast.txt_forecast.forecastday[2].fcttext;
-      const daySecond = data.forecast.txt_forecast.forecastday[4].title;
-      const day2txt = data.forecast.txt_forecast.forecastday[4].fcttext;
-      const dayThird = data.forecast.txt_forecast.forecastday[6].title;
-      const day3txt = data.forecast.txt_forecast.forecastday[6].fcttext;
-      dispatch(setDay(dayFirst, daySecond, dayThird));
-      dispatch(setWeekTxt(day1txt, day2txt, day3txt));
+
     })
 
   }
