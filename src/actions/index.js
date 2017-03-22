@@ -51,7 +51,7 @@ export const setWeekTxt = (day1txt, day2txt, day3txt) => ({
 
 export function getWeather(zip) {
   return dispatch => {
-    const url = 'http://api.openweathermap.org/data/2.5/forecast?zip=' + zip + '&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
+    const url = 'https://api.openweathermap.org/data/2.5/forecast?zip=' + zip + '&units=imperial&APPID=6d491ba0f668b255229bc7d3201cc125'
     fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -103,7 +103,7 @@ export function getWeather(zip) {
     })
     .catch(ex => console.log(ex))
 
-    const urlSec = 'http://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json'
+    const urlSec = 'https://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json'
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
@@ -124,7 +124,7 @@ export function getWeather(zip) {
     })
     .catch(ex => console.log(ex))
 
-    const urlThi = 'http://api.wunderground.com/api/5507ba67bf70f890/alerts/q/' + zip + '.json';
+    const urlThi = 'https://api.wunderground.com/api/5507ba67bf70f890/alerts/q/' + zip + '.json';
     fetch(urlThi)
     .then(response => response.json())
     .then(data => {
@@ -140,7 +140,7 @@ export function getWeather(zip) {
       dispatch(setWarn(newWarn));
     })
 
-    const urlWeek = 'http://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json';
+    const urlWeek = 'https://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json';
     fetch(urlWeek)
     .then(response => response.json())
     .then(data => {
