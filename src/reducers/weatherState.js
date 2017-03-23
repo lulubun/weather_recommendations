@@ -11,12 +11,17 @@ const initialState = {
 
 const weatherState = (state=initialState, action) => {
   switch (action.type) {
-    case 'SET_TEMP':
+    case 'SET_HIGH':
     return {
       ...state,
-      high: action.newHigh,
-      low: action.newLow
+      high: action.newHigh
     };
+
+    case 'SET_LOW':
+    return {
+      ...state,
+      low: action.newLow
+    }
 
     case 'SET_RAIN':
     return {
