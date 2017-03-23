@@ -11,7 +11,7 @@ export class Week extends React.Component {
         <Table>
           <TableBody displayRowCheckbox={false}>
             <TableRow>
-              <TableRowColumn style={{width: '10%'}}>{this.props.dayUne}</TableRowColumn>
+              <TableRowColumn className="col">{this.props.dayUne}</TableRowColumn>
               <TableRowColumn>{this.props.dayUneFor}</TableRowColumn>
             </TableRow>
             <TableRow>

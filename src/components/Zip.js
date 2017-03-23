@@ -7,7 +7,7 @@ export class Zip extends React.Component {
   render() {
     return (
       <div className="zip">
-        <h6>Enter your zip code here for your forecast</h6>
+        <p>Enter your zip code here for your forecast</p>
         <form onSubmit={(event) => {
           event.preventDefault();
           const zipInput = event.target.textbox.value;

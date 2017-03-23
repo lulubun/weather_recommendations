@@ -60,9 +60,11 @@ li {
 }
 
 .Weather {
-  padding-left: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 5px;
-  font-size: 30px;
+  font-size: 20px;
+  line-height: 2;
 }
 
 .clothes {
@@ -80,10 +82,12 @@ li {
   text-align: center;
   color: white;
   height: 600px;
+  width: 100%;
 }
 
 #opener {
   font-size: 150px;
+  padding-bottom: 30px;
 }
 
 #sidebar {
@@ -92,4 +96,66 @@ li {
   width: 25%;
   font-size: 10px;
   padding-bottom: 10px;
+}
+
+.forecast {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-indent: 10px;
+}
+
+#alert {
+  font-size: 15px;
+}
+
+.zip {
+  font-size: 15px;
+}
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  margin-top: 100px;
+}
+
+.flex-item {
+  padding-top: 4px;
+  padding-left: 4px;
+  padding-bottom: 4px;
+  padding-right: 4px;
+  text-align: justify;
+  background-color: cornflowerblue;
+  width: 200px;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+  #opener {
+    font-size: 20px;
+  }
+
+  .flex-item{
+    height: 375px;
+    border-radius: 0;
+  }
+
+  .col {
+    width: 20%;
+  }
+
+  .week {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.col {
+  width: 10%;
 }

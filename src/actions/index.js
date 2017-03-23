@@ -60,7 +60,6 @@ export function getWeather(zip) {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       let newLow = 100;
       let lowArr = [];
       for (var i = 0; i < data.hourly_forecast.length; i++) {
@@ -68,7 +67,6 @@ export function getWeather(zip) {
         let temp = data.hourly_forecast[i].temp.english;
         lowArr["hour"]= "temp";
       }
-      console.log(lowArr);
       let num = data.hourly_forecast[0].FCTTIME.hour;
       if (num < 10) {
         let num2 = (9 - num);
@@ -105,7 +103,6 @@ export function getWeather(zip) {
           lowArr.push(data.hourly_forecast[s].temp.english)
         }
       }
-      console.log(lowArr);
       for (var x = 0; x < lowArr.length; x++) {
         if (lowArr[x] < newLow) {
           newLow = lowArr[x]
@@ -133,7 +130,6 @@ export function getWeather(zip) {
         newRain = data.forecast.txt_forecast.forecastday[0].pop;
         newHigh = data.forecast.simpleforecast.forecastday[1].high.fahrenheit;
       }
-      console.log(data);
       const dayFirst = data.forecast.txt_forecast.forecastday[2].title;
       const day1txt = data.forecast.txt_forecast.forecastday[2].fcttext;
       const daySecond = data.forecast.txt_forecast.forecastday[4].title;
