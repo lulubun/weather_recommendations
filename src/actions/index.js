@@ -62,12 +62,8 @@ export function getWeather(zip) {
     .then(data => {
       let newLow = 100;
       let lowArr = [];
-      for (var i = 0; i < data.hourly_forecast.length; i++) {
-        let hour = data.hourly_forecast[i].FCTTIME.hour;
-        let temp = data.hourly_forecast[i].temp.english;
-        lowArr["hour"]= "temp";
-      }
       let num = data.hourly_forecast[0].FCTTIME.hour;
+      console.log(num);
       if (num < 10) {
         let num2 = (9 - num);
         let num3 = (18 - num);
@@ -78,31 +74,32 @@ export function getWeather(zip) {
         for (var z = 0; z < (2^(num-9)); z++) {
           lowArr.push(data.hourly_forecast[z].temp.english)
         }
-      } else if (num === 18) {
+      } else if (num == 18) {
         for (var t = 15; t < 24; t++) {
           lowArr.push(data.hourly_forecast[t].temp.english)
         }
-      } else if (num === 19) {
+      } else if (num == 19) {
         for (var u = 14; u < 23; u++) {
           lowArr.push(data.hourly_forecast[u].temp.english)
         }
-      } else if (num === 20) {
+      } else if (num == 20) {
         for (var v = 13; v < 22; v++) {
           lowArr.push(data.hourly_forecast[v].temp.english)
         }
-      } else if (num === 21) {
+      } else if (num == 21) {
         for (var q = 12; q < 21; q++) {
           lowArr.push(data.hourly_forecast[q].temp.english)
         }
-      } else if (num === 22) {
+      } else if (num == 22) {
         for (var r = 11; r < 20; r++) {
           lowArr.push(data.hourly_forecast[r].temp.english)
         }
-      } else if (num === 23) {
+      } else if (num == 23) {
         for (var s = 10; s < 19; s++) {
           lowArr.push(data.hourly_forecast[s].temp.english)
         }
       }
+      console.log(lowArr);
       for (var x = 0; x < lowArr.length; x++) {
         if (lowArr[x] < newLow) {
           newLow = lowArr[x]
@@ -116,6 +113,7 @@ export function getWeather(zip) {
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       let jour = '';
       let time = new Date();
       let hour = time.getHours();
@@ -140,8 +138,8 @@ export function getWeather(zip) {
       dispatch(setWeekTxt(day1txt, day2txt, day3txt));
       dispatch(setRain(newRain));
       dispatch(setToday(jour));
-      dispatch(setRecommendations())
-      dispatch(setHigh(newHigh))
+      dispatch(setRecommendations());
+      dispatch(setHigh(newHigh));
     })
     .catch(ex => console.log(ex))
 
