@@ -63,7 +63,6 @@ export function getWeather(zip) {
       let newLow = 100;
       let lowArr = [];
       let num = data.hourly_forecast[0].FCTTIME.hour;
-      console.log(num);
       if (num < 10) {
         let num2 = (9 - num);
         let num3 = (18 - num);
@@ -99,7 +98,6 @@ export function getWeather(zip) {
           lowArr.push(data.hourly_forecast[s].temp.english)
         }
       }
-      console.log(lowArr);
       for (var x = 0; x < lowArr.length; x++) {
         if (lowArr[x] < newLow) {
           newLow = lowArr[x]
@@ -113,7 +111,6 @@ export function getWeather(zip) {
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       let jour = '';
       let time = new Date();
       let hour = time.getHours();

@@ -10,17 +10,22 @@ export class Welcome extends React.Component {
         <div className="Welcome">
           <h1 id="opener">Workday Weather</h1>
           <br></br>
-          <p>To get the forecast for the working hours of 9am-6pm</p>
+          <p id="hours">To get the forecast for the working hours of 9am-6pm</p>
           <Link to={'/weather'} className="weatherLink"><FlatButton label="click here" secondary={true} /></Link>
         </div>
-        <div id="umbrella">
-          <img className="icon" src={'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Keepdry.svg/300px-Keepdry.svg.png'} />
-        </div>
-        <div id="suitcase">
-          <img className="icon" src={'https://upload.wikimedia.org/wikipedia/commons/2/22/Noun_project_401.svg'} />
-        </div>
-        <div id="temp">
-          <img className="icon" src={'http://tdhafner.ru/wp-content/uploads/2016/12/thermometer-1_icon-icons.com_65087-150x150.png'} />
+        <div className="intro">
+          <div id="umbrella" className="explain">
+            <img className="icon" alt="umbrella" src={'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Keepdry.svg/300px-Keepdry.svg.png'} />
+            <p>Know what you will need for the day ahead</p>
+          </div>
+          <div id="baby" className="explain">
+            <img className="icon" alt="baby" src={'http://iconbug.com/data/3c/256/14e322f2744d3eb3aa4b106bacd35bfe.png'} />
+            <p>Know the weather during the hours your children could be outside</p>
+          </div>
+          <div id="temp" className="explain">
+            <img className="icon" alt="temp" src={'http://tdhafner.ru/wp-content/uploads/2016/12/thermometer-1_icon-icons.com_65087-150x150.png'} />
+            <p>Get a clear and simple weather forecast</p>
+          </div>
         </div>
       </div>
     )

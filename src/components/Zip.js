@@ -1,22 +1,23 @@
 import React from 'react';
 import * as actions from '../actions/index';
 import {connect} from 'react-redux';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
+const style = {
+  margin: 12,
+};
+
+let zipInput = ''
 
 export class Zip extends React.Component {
   render() {
     return (
       <div className="zip">
         <p>Enter your zip code here for your forecast</p>
-        <form onSubmit={(event) => {
-          event.preventDefault();
-          const zipInput = event.target.textbox.value;
-          this.props.zipAct(zipInput)
-          this.props.storeZip(zipInput)
-          event.target.textbox.value = '';
-        }}>
-          <input name="textbox" id="textbox" type="text" placeholder="(ex 30030)"/>
-          <input id="go" type="submit" value="Go!"/>
+        <form>
+          <TextField hintText="ex 30030" name="textbox" onChange={(event, newValue) => zipInput= newValue} />
+          <RaisedButton label="Go!" secondary={true} style={style} onTouchTap={this.props.zipAct(zipInput)}	/>
         </form>
       </div>
     )
@@ -24,9 +25,7 @@ export class Zip extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  zipAct: (zip) => dispatch(actions.getWeather(zip)),
-
-  storeZip: (zipInput) => dispatch(actions.setUrl(zipInput))
+  zipAct: (zipInput) => dispatch(actions.getWeather(zipInput))
 })
 
 export default connect(null, mapDispatchToProps)(Zip);

@@ -10,6 +10,41 @@ body {
 
 }
 
+.intro {
+    display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 20px;
+}
+
+.explain {
+  position: relative;
+  align-items: center;
+  float: right;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  color: #505050;
+}
+
+#baby {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.icon {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  height: 50px;
+  align-content: center;
+  filter: opacity(60%);
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -87,7 +122,11 @@ li {
 
 #opener {
   font-size: 150px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
+}
+
+#hours {
+  padding-bottom: 20px;
 }
 
 #sidebar {
@@ -158,8 +197,4 @@ li {
 
 .col {
   width: 10%;
-}
-
-.icon {
-  height: 50px;
 }

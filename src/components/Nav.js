@@ -3,8 +3,6 @@ import {Tab, Tabs} from 'material-ui/Tabs';
 import Weather from '../components/Weather';
 import Week from '../components/Week';
 import Clothes from '../components/Clothes';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 
 const AllTabs = () => (

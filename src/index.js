@@ -11,6 +11,7 @@ import WeekState from './reducers/weekState';
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 const reducer = combineReducers({
   weatherState,
@@ -48,6 +49,8 @@ const Start = () => (
     </Provider>
   </MuiThemeProvider>
 );
+
+injectTapEventPlugin();
 
 ReactDOM.render(
   <Start />,
