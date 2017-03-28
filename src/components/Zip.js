@@ -9,15 +9,21 @@ const style = {
 };
 
 let zipInput = ''
+let starter = 'ex 30030'
 
 export class Zip extends React.Component {
   render() {
     return (
       <div className="zip">
         <p>Enter your zip code here for your forecast</p>
-        <form>
-          <TextField hintText="ex 30030" name="textbox" onChange={(event, newValue) => zipInput= newValue} />
-          <RaisedButton label="Go!" secondary={true} style={style} onTouchTap={this.props.zipAct(zipInput)}	/>
+        <form >
+          <TextField hintText={starter} name="textbox" onChange={(event, newValue) => {
+            zipInput = newValue
+          }}/>
+          <RaisedButton label="Go!" secondary={true} style={style} onTouchTap={(event) => {
+            this.props.zipAct(zipInput);
+            starter = '';
+          }} />
         </form>
       </div>
     )
