@@ -17,12 +17,12 @@ export class Zip extends React.Component {
       <div className="zip">
         <p>Enter your zip code here for your forecast</p>
         <form >
-          <TextField hintText={starter} name="textbox" onChange={(event, newValue) => {
+          <TextField id="text" hintText={starter} name="textbox" onChange={(event, newValue) => {
             zipInput = newValue
           }}/>
           <RaisedButton label="Go!" secondary={true} style={style} onTouchTap={(event) => {
             this.props.zipAct(zipInput);
-            starter = '';
+            document.getElementById('text').value = '';
           }} />
         </form>
       </div>
