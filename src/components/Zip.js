@@ -15,7 +15,7 @@ export class Zip extends React.Component {
   render() {
     return (
       <div className="zip">
-        <p>Enter your zip code here for your forecast</p>
+        <p>Enter your zip code for your forecast</p>
         <form >
           <TextField id="text" hintText={starter} name="textbox" onChange={(event, newValue) => {
             zipInput = newValue

@@ -22,6 +22,18 @@ export class Week extends React.Component {
               <TableRowColumn>{this.props.dayTrois}</TableRowColumn>
               <TableRowColumn>{this.props.dayTroisFor}</TableRowColumn>
             </TableRow>
+            <TableRow>
+              <TableRowColumn>{this.props.dayCinq}</TableRowColumn>
+              <TableRowColumn>{this.props.dayCinqFor}</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>{this.props.daySix}</TableRowColumn>
+              <TableRowColumn>{this.props.daySixFor}</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>{this.props.daySept}</TableRowColumn>
+              <TableRowColumn>{this.props.daySeptFor}</TableRowColumn>
+            </TableRow>
           </TableBody>
         </Table>
       </div>
@@ -33,9 +45,17 @@ const mapStateToProps = (state, props) => ({
   dayUne: state.WeekState.day1,
   dayDeux: state.WeekState.day2,
   dayTrois: state.WeekState.day3,
+  dayQuatre: state.WeekState.day4,
+  dayCinq: state.WeekState.day5,
+  daySix: state.WeekState.day6,
+  daySept: state.WeekState.day7,
   dayUneFor: state.WeekState.day1for,
   dayDeuxFor: state.WeekState.day2for,
   dayTroisFor: state.WeekState.day3for,
+  dayQuatreFor: state.WeekState.day4for,
+  dayCinqFor: state.WeekState.day5for,
+  daySixFor: state.WeekState.day6for,
+  daySeptFor: state.WeekState.day7for
 });
 
 const mapDispatchToProps = (dispatch) => ({

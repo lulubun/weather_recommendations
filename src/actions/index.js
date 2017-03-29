@@ -1,3 +1,10 @@
+export const SET_CITY = 'SET_CITY';
+export const setCity = (newCity, newState) => ({
+  type: SET_CITY,
+  newCity,
+  newState
+});
+
 export const SET_HIGH = 'SET_HIGH';
 export const setHigh = (newHigh) => ({
   type: SET_HIGH,
@@ -39,27 +46,45 @@ export const setSea = () => ({
 });
 
 export const SET_DAY = 'SET_DAY';
-export const setDay = (dayFirst, daySecond, dayThird) => ({
+export const setDay = (dayFirst, daySecond, dayThird, dayFourth, dayFifth, daySixth, daySeventh) => ({
   type: SET_DAY,
   dayFirst,
   daySecond,
-  dayThird
+  dayThird,
+  dayFourth,
+  dayFifth,
+  daySixth,
+  daySeventh
 });
 
 export const SET_TXT_WE = 'SET_TXT_WE';
-export const setWeekTxt = (day1txt, day2txt, day3txt) => ({
+export const setWeekTxt = (day1txt, day2txt, day3txt, day4txt, day5txt, day6txt, day7txt) => ({
   type: SET_TXT_WE,
   day1txt,
   day2txt,
-  day3txt
+  day3txt,
+  day4txt,
+  day5txt,
+  day6txt,
+  day7txt
 })
 
 export function getWeather(zip) {
   return dispatch => {
+    const zipUrl = 'http://api.wunderground.com/api/5507ba67bf70f890/geolookup/q/' + zip + '.json'
+    fetch(zipUrl)
+    .then(response => response.json())
+    .then(data => {
+      const newCity = data.location.city;
+      const newState = data.location.state;
+      dispatch(setCity(newCity, newState))
+    })
+
     const url = 'https://api.wunderground.com/api/5507ba67bf70f890/hourly/q/' + zip + '.json'
     fetch(url)
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       let newLow = 100;
       let lowArr = [];
       let num = data.hourly_forecast[0].FCTTIME.hour;
@@ -104,10 +129,11 @@ export function getWeather(zip) {
         }
       }
       dispatch(setLow(newLow))
+      dispatch(setRecommendations());
     })
     .catch(ex => console.log(ex))
 
-    const urlSec = 'https://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json'
+    const urlSec = 'https://api.wunderground.com/api/5507ba67bf70f890/forecast10day/q/' + zip + '.json'
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
@@ -131,12 +157,20 @@ export function getWeather(zip) {
       const day2txt = data.forecast.txt_forecast.forecastday[4].fcttext;
       const dayThird = data.forecast.txt_forecast.forecastday[6].title;
       const day3txt = data.forecast.txt_forecast.forecastday[6].fcttext;
-      dispatch(setDay(dayFirst, daySecond, dayThird));
-      dispatch(setWeekTxt(day1txt, day2txt, day3txt));
+      const dayFourth = data.forecast.txt_forecast.forecastday[8].title;
+      const day4txt = data.forecast.txt_forecast.forecastday[8].fcttext;
+      const dayFifth = data.forecast.txt_forecast.forecastday[10].title;
+      const day5txt = data.forecast.txt_forecast.forecastday[10].fcttext;
+      const daySixth = data.forecast.txt_forecast.forecastday[12].title;
+      const day6txt = data.forecast.txt_forecast.forecastday[12].fcttext;
+      const daySeventh = data.forecast.txt_forecast.forecastday[14].title;
+      const day7txt= data.forecast.txt_forecast.forecastday[14].fcttext;
+      dispatch(setDay(dayFirst, daySecond, dayThird, dayFourth, dayFifth, daySixth, daySeventh));
+      dispatch(setWeekTxt(day1txt, day2txt, day3txt, day4txt, day5txt, day6txt, day7txt));
       dispatch(setRain(newRain));
       dispatch(setToday(jour));
-      dispatch(setRecommendations());
       dispatch(setHigh(newHigh));
+      dispatch(setRecommendations());
     })
     .catch(ex => console.log(ex))
 
@@ -154,14 +188,7 @@ export function getWeather(zip) {
         newWarn += data.alerts[2]
       }}
       dispatch(setWarn(newWarn));
+      console.log('now');
     })
-
-    const urlWeek = 'https://api.wunderground.com/api/5507ba67bf70f890/forecast/q/' + zip + '.json';
-    fetch(urlWeek)
-    .then(response => response.json())
-    .then(data => {
-
-    })
-
   }
 };

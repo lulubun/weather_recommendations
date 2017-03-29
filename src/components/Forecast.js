@@ -9,6 +9,8 @@ export class Forecast extends React.Component {
     return (
       <div className="forecast">
         <Paper zDepth={2}>
+          <p>{this.props.placeCi}, {this.props.placeSt}</p>
+          <Divider />
           <p>{this.props.thisDay}'s High between 9am - 6pm: {this.props.dayHigh}°F </p>
           <Divider />
           <p>{this.props.thisDay}'s Low between 9am - 6pm: {this.props.dayLow}°F </p>
@@ -23,6 +25,8 @@ export class Forecast extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
+  placeCi: state.weatherState.city,
+  placeSt: state.weatherState.place,
   thisDay: state.weatherState.today,
   dayHigh: state.weatherState.high,
   dayLow: state.weatherState.low,

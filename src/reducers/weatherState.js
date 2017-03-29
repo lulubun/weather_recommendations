@@ -1,5 +1,7 @@
 const initialState = {
   today: 'Today',
+  city: 'Decatur',
+  place: 'GA',
   url: 30030,
   high: 0,
   low: 0,
@@ -11,6 +13,13 @@ const initialState = {
 
 const weatherState = (state=initialState, action) => {
   switch (action.type) {
+    case 'SET_CITY':
+    return {
+      ...state,
+      city: action.newCity,
+      place: action.newState
+    };
+
     case 'SET_HIGH':
     return {
       ...state,
@@ -41,26 +50,9 @@ const weatherState = (state=initialState, action) => {
       weatherAlerts: action.newWarn
     };
 
-    case 'SET_SEA':
-    let date = new Date();
-    let month = date.getMonth();
-    let newSea = ''
-    if (2 <= month < 5) {
-      newSea = 'spring';
-    } else if (5 <= month < 9) {
-      newSea = 'summer';
-    } else if (9 <= month <= 12) {
-      newSea = 'fall';
-    } else {
-      newSea = 'winter'
-    }
-    return {
-      ...state,
-      season: newSea
-    };
-
     case 'SET_RECOMMENDATIONS':
     let freshRecs = '';
+    console.log(state.high, state.low);
     if (state.rain > 75) {
       freshRecs = 'You will need an umbrella, rain coat, galoshes, and maybe a boat'
     } else if (state.rain > 30) {

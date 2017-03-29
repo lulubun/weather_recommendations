@@ -10,8 +10,7 @@ export class Welcome extends React.Component {
         <div className="Welcome">
           <h1 id="opener">Workday Weather</h1>
           <br></br>
-          <p id="hours">To get the forecast for the working hours of 9am-6pm</p>
-          <Link to={'/weather'} className="weatherLink"><FlatButton label="click here" secondary={true} /></Link>
+          <Link to={'/weather'} className="weatherLink"><FlatButton label="click here to get the forecast for the working hours of 9am-6pm" secondary={true} /></Link>
         </div>
         <div className="intro">
           <div id="umbrella" className="explain">
