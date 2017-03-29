@@ -71,7 +71,7 @@ export const setWeekTxt = (day1txt, day2txt, day3txt, day4txt, day5txt, day6txt,
 
 export function getWeather(zip) {
   return dispatch => {
-    const zipUrl = 'http://api.wunderground.com/api/5507ba67bf70f890/geolookup/q/' + zip + '.json'
+    const zipUrl = 'https://api.wunderground.com/api/5507ba67bf70f890/geolookup/q/' + zip + '.json'
     fetch(zipUrl)
     .then(response => response.json())
     .then(data => {
