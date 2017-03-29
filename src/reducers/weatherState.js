@@ -1,7 +1,7 @@
 const initialState = {
   today: 'Today',
-  city: 'Decatur',
-  place: 'GA',
+  city: 'City',
+  place: 'State',
   url: 30030,
   high: 0,
   low: 0,
