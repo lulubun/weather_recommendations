@@ -12,27 +12,27 @@ export class Week extends React.Component {
           <TableBody displayRowCheckbox={false}>
             <TableRow>
               <TableRowColumn className="col">{this.props.dayUne}</TableRowColumn>
-              <TableRowColumn>{this.props.dayUneFor}</TableRowColumn>
+              <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.dayUneFor}</TableRowColumn>
             </TableRow>
             <TableRow>
               <TableRowColumn>{this.props.dayDeux}</TableRowColumn>
-              <TableRowColumn>{this.props.dayDeuxFor}</TableRowColumn>
+              <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.dayDeuxFor}</TableRowColumn>
             </TableRow>
             <TableRow>
               <TableRowColumn>{this.props.dayTrois}</TableRowColumn>
-              <TableRowColumn>{this.props.dayTroisFor}</TableRowColumn>
+              <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.dayTroisFor}</TableRowColumn>
             </TableRow>
             <TableRow>
               <TableRowColumn>{this.props.dayCinq}</TableRowColumn>
-              <TableRowColumn>{this.props.dayCinqFor}</TableRowColumn>
+              <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.dayCinqFor}</TableRowColumn>
             </TableRow>
             <TableRow>
               <TableRowColumn>{this.props.daySix}</TableRowColumn>
-              <TableRowColumn>{this.props.daySixFor}</TableRowColumn>
+              <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.daySixFor}</TableRowColumn>
             </TableRow>
             <TableRow>
               <TableRowColumn>{this.props.daySept}</TableRowColumn>
-              <TableRowColumn>{this.props.daySeptFor}</TableRowColumn>
+              <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.daySeptFor}</TableRowColumn>
             </TableRow>
           </TableBody>
         </Table>

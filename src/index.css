@@ -63,9 +63,6 @@ li {
 
 .weatherLink {
   text-decoration: none;
-  padding-left: 3px;
-  padding-right: 3px;
-  padding-top: 2px;
   color: pink;
   margin-top: 20px;
 }
@@ -112,18 +109,26 @@ li {
 }
 
 .Welcome {
-  background-image: url("./storm.jpg");
-  padding-top: 30px;
-  padding-bottom: 30px;
+  background-image: url("./irene_radar_11am.png");
+  padding-top: 50px;
+  padding-bottom: 50px;
   text-align: center;
   color: white;
   height: 600px;
   width: 100%;
+   text-shadow:
+       -1px -1px 0 #000,
+       1px -1px 0 #000,
+       -1px 1px 0 #000,
+       1px 1px 0 #000;
+ -webkit-font-smoothing: antialiased;
+
 }
 
 #opener {
   font-size: 150px;
-  padding-bottom: 40px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 #hours {
@@ -186,8 +191,13 @@ li {
     border-radius: 0;
   }
 
-  .col {
-    width: 20%;
+  td {
+    width: 30%;
+    background-color: blue;
+  }
+
+  #sidebar {
+    visibility: hidden;
   }
 
   .week {
@@ -198,4 +208,8 @@ li {
 
 .col {
   width: 10%;
+}
+
+#coldGuy {
+  height: 5%;
 }
