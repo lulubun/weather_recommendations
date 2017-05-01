@@ -8,7 +8,9 @@ const initialState = {
   rain: 0,
   weatherAlerts: 'No alerts today',
   recommendations: '',
-  season: ''
+  season: '',
+  rightNow: 0,
+  rightNowFeels: 0,
 }
 
 const weatherState = (state=initialState, action) => {
@@ -84,6 +86,13 @@ const weatherState = (state=initialState, action) => {
       ...state,
       recommendations: freshRecs
     };
+
+    case 'SET_NOW':
+    return {
+      ...state,
+      rightNow: action.now,
+      rightNowFeels: action.nowFeels
+    }
 
 
     default:

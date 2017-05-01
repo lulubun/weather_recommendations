@@ -69,6 +69,13 @@ export const setWeekTxt = (day1txt, day2txt, day3txt, day4txt, day5txt, day6txt,
   day7txt
 })
 
+export const SET_NOW = 'SET_NOW';
+export const setNow = (now, nowFeels) => ({
+  type: SET_NOW,
+  now,
+  nowFeels
+})
+
 export function getWeather(zip) {
   return dispatch => {
     const zipUrl = 'https://api.wunderground.com/api/5507ba67bf70f890/geolookup/q/' + zip + '.json'
@@ -85,6 +92,8 @@ export function getWeather(zip) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
+      let now = data.hourly_forecast[0].temp.english;
+      let nowFeels = data.hourly_forecast[0].feelslike.english;
       let newLow = 100;
       let lowArr = [];
       let num = data.hourly_forecast[0].FCTTIME.hour;
@@ -129,7 +138,7 @@ export function getWeather(zip) {
         }
       }
       dispatch(setLow(newLow))
-      dispatch(setRecommendations());
+      dispatch(setNow(now, nowFeels));
     })
     .catch(ex => console.log(ex))
 

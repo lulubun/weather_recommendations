@@ -11,6 +11,10 @@ export class Now extends React.Component {
         <Paper zDepth={2}>
           <p>{this.props.placeCi}, {this.props.placeSt}</p>
           <Divider />
+          <p> Temperature right now: {this.props.now}°</p>
+          <Divider />
+          <p> Feels like: {this.props.feelsNow}°</p>
+          <Divider />
           <p> Chance of rain: {this.props.dayRain}%</p>
           <Divider />
       </Paper>
@@ -22,6 +26,9 @@ export class Now extends React.Component {
 const mapStateToProps = (state, props) => ({
   placeCi: state.weatherState.city,
   placeSt: state.weatherState.place,
+  now: state.weatherState.rightNow,
+  feelsNow: state.weatherState.rightNowFeels,
+  dayRain: state.weatherState.rain,
 });
 
 export default connect(mapStateToProps)(Now);
