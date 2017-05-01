@@ -2,7 +2,7 @@ import React from 'react';
 import {Tab, Tabs} from 'material-ui/Tabs';
 import Weather from '../components/Weather';
 import Week from '../components/Week';
-import Clothes from '../components/Clothes';
+import Now from '../components/Now';
 
 
 const AllTabs = () => (
@@ -20,9 +20,9 @@ const AllTabs = () => (
         <Week />
       </div>
     </Tab>
-    <Tab label="Prepare">
+    <Tab label="Weather Right Now" >
       <div>
-        <Clothes />
+        <Now />
       </div>
     </Tab>
   </Tabs>
