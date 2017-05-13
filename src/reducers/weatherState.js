@@ -11,6 +11,7 @@ const initialState = {
   season: '',
   rightNow: 0,
   rightNowFeels: 0,
+  img: ''
 }
 
 const weatherState = (state=initialState, action) => {
@@ -52,40 +53,11 @@ const weatherState = (state=initialState, action) => {
       weatherAlerts: action.newWarn
     };
 
-    case 'SET_RECOMMENDATIONS':
-    let freshRecs = '';
-    console.log(state.high, state.low);
-    if (state.rain > 75) {
-      freshRecs = 'You will need an umbrella, rain coat, galoshes, and maybe a boat'
-    } else if (state.rain > 30) {
-      freshRecs = 'Bring an umbrella, just in case '
-    } else if (state.high - state.low > 20) {
-      freshRecs = 'Wear layers, the weather is going to change'
-    } else if (state.high > 90) {
-      freshRecs = 'Wear as little as you can, you are going to boil alive'
-    } else if (state.high > 85) {
-      freshRecs = 'It will be hot but you will survive in shorts and a tanktop'
-    } else if (state.high > 80) {
-      freshRecs = 'It will be warm but nice, wear light clothes'
-    } else if (state.high < 79 && state.low > 60) {
-      freshRecs = 'It will be perfect outside so get outside as soon as you can!'
-    } else if (state.low < 59 && state.high < 65) {
-      freshRecs = 'It will be chilly, wear pants'
-    } else if (state.low < 30) {
-      freshRecs = 'It is actually freezing outside. Wear everything you own'
-    } else if (state.low < 20 && state.high < 35) {
-      freshRecs = 'Just take a dog sled to work'
-    } else if (state.low < 40) {
-      freshRecs = 'Bundle up, unless you just really like the cold'
-    } else if (state.low < 50) {
-      freshRecs = 'Wear a warm coat'
-    } else if (state.low < 60) {
-      freshRecs = 'Bring a sweater'
-    }
+    case 'SET_IMG':
     return {
       ...state,
-      recommendations: freshRecs
-    };
+      img: action.icon
+    }
 
     case 'SET_NOW':
     return {

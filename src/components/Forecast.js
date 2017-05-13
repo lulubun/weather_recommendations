@@ -6,8 +6,21 @@ import Divider from 'material-ui/Divider';
 
 export class Forecast extends React.Component {
   render() {
+    const right = {
+      right: '0',
+      bottom: '40px',
+      position: 'absolute',
+      paddingRight: '12%',
+      paddingLeft: '10%'
+    }
+    const left = {
+      width: '70%'
+    }
+    const big = {
+      height: '80px',
+    }
     return (
-      <div className="forecast">
+      <div className="forecast" style={left}>
         <Paper zDepth={2}>
           <p>{this.props.placeCi}, {this.props.placeSt}</p>
           <Divider />
@@ -18,7 +31,10 @@ export class Forecast extends React.Component {
           <p> Chance of rain: {this.props.dayRain}%</p>
           <Divider />
           <p id="alert"> Weather Alerts:  {this.props.dayWarnings}</p>
-      </Paper>
+        </Paper>
+        <div className="image" style={right}>
+          <img style={big} src={this.props.weatherImg} />
+        </div>
       </div>
     );
   }
@@ -31,7 +47,8 @@ const mapStateToProps = (state, props) => ({
   dayHigh: state.weatherState.high,
   dayLow: state.weatherState.low,
   dayRain: state.weatherState.rain,
-  dayWarnings: state.weatherState.weatherAlerts
+  dayWarnings: state.weatherState.weatherAlerts,
+  weatherImg: state.weatherState.img
 });
 
 export default connect(mapStateToProps)(Forecast);

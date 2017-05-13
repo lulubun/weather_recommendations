@@ -10,7 +10,7 @@ export class Welcome extends React.Component {
         <div className="Welcome">
           <h1 id="opener">Workday Weather</h1>
           <br></br>
-          <Link to={'/weather'} className="weatherLink"><FlatButton label="click here to get the forecast for the working hours of 9am-6pm" secondary={true} backgroundColor={'rgba(255,255,255,0.60)'} hoverColor={'rgba(255,255,255,1)'} rippleColor={'#AE3CB4'} /></Link>
+          <Link to={'/weather'} className="weatherLink"><FlatButton label="click here to get the forecast for the working hours of 9am-6pm" labelStyle={{fontSize: '25px'}} secondary={true} backgroundColor={'rgba(255,255,255,0)'} hoverColor={'rgba(255,255,255,1)'} rippleColor={'#AE3CB4'} /></Link>
         </div>
         <div className="intro">
           <div id="umbrella" className="explain">

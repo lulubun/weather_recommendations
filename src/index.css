@@ -64,7 +64,7 @@ li {
 .weatherLink {
   text-decoration: none;
   color: pink;
-  margin-top: 20px;
+  font-weight: bold;
 }
 
 .topBar {
@@ -100,16 +100,8 @@ li {
   line-height: 2;
 }
 
-.clothes {
-  padding-top: 20px;
-  padding-left: 20px;
-  background-image: url("./rain.jpg");
-  height: 600px;
-  color: white;
-}
-
 .Welcome {
-  background-image: url("./irene_radar_11am.png");
+  background-image: url("./blue_storm.jpg");
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;

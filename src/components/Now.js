@@ -6,9 +6,12 @@ import Divider from 'material-ui/Divider';
 
 export class Now extends React.Component {
   render() {
+    const text = {
+      'paddingLeft': '10px'
+    }
     return (
-      <div className="forecast">
-        <Paper zDepth={2}>
+      <div className="now" className="Weather">
+        <Paper zDepth={2} style={text}>
           <p>{this.props.placeCi}, {this.props.placeSt}</p>
           <Divider />
           <p> Temperature right now: {this.props.now}°</p>

@@ -76,12 +76,19 @@ export const setNow = (now, nowFeels) => ({
   nowFeels
 })
 
+export const SET_IMG = 'SET_IMG';
+export const setImg = (icon) => ({
+  type: SET_IMG,
+  icon
+})
+
 export function getWeather(zip) {
   return dispatch => {
     const zipUrl = 'https://api.wunderground.com/api/5507ba67bf70f890/geolookup/q/' + zip + '.json'
     fetch(zipUrl)
     .then(response => response.json())
     .then(data => {
+      console.log('geo:', data);
       const newCity = data.location.city;
       const newState = data.location.state;
       dispatch(setCity(newCity, newState))
@@ -91,7 +98,7 @@ export function getWeather(zip) {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      console.log('hr:', data);
       let now = data.hourly_forecast[0].temp.english;
       let nowFeels = data.hourly_forecast[0].feelslike.english;
       let newLow = 100;
@@ -146,18 +153,22 @@ export function getWeather(zip) {
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
+      console.log('10:', data);
       let jour = '';
       let time = new Date();
       let hour = time.getHours();
       let newRain = '';
       let newHigh = 0;
+      let icon = '';
       if (hour > 18) {
         jour = data.forecast.txt_forecast.forecastday[2].title;
         newRain = data.forecast.txt_forecast.forecastday[2].pop;
+        icon = data.forecast.txt_forecast.forecastday[2].icon_url;
         newHigh = data.forecast.simpleforecast.forecastday[1].high.fahrenheit;
       } else {
         jour = data.forecast.txt_forecast.forecastday[0].title;
         newRain = data.forecast.txt_forecast.forecastday[0].pop;
+        icon = data.forecast.txt_forecast.forecastday[0].icon_url;
         newHigh = data.forecast.simpleforecast.forecastday[1].high.fahrenheit;
       }
       const dayFirst = data.forecast.txt_forecast.forecastday[2].title;
@@ -179,7 +190,7 @@ export function getWeather(zip) {
       dispatch(setRain(newRain));
       dispatch(setToday(jour));
       dispatch(setHigh(newHigh));
-      dispatch(setRecommendations());
+      dispatch(setImg(icon));
     })
     .catch(ex => console.log(ex))
 
