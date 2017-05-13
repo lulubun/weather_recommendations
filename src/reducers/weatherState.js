@@ -11,6 +11,7 @@ const initialState = {
   season: '',
   rightNow: 0,
   rightNowFeels: 0,
+  rightNowIcon: '',
   img: ''
 }
 
@@ -63,7 +64,8 @@ const weatherState = (state=initialState, action) => {
     return {
       ...state,
       rightNow: action.now,
-      rightNowFeels: action.nowFeels
+      rightNowFeels: action.nowFeels,
+      rightNowIcon: action.nowIcon,
     }
 
 

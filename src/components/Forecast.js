@@ -14,11 +14,14 @@ export class Forecast extends React.Component {
       paddingLeft: '10%'
     }
     const left = {
-      width: '70%'
+      maxWidth: '70%'
     }
     const big = {
-      height: '80px',
+      height: '150px',
+      position: 'relative',
+      top: '30px'
     }
+    let imageURL = this.props.weatherImg;
     return (
       <div className="forecast" style={left}>
         <Paper zDepth={2}>
@@ -33,7 +36,7 @@ export class Forecast extends React.Component {
           <p id="alert"> Weather Alerts:  {this.props.dayWarnings}</p>
         </Paper>
         <div className="image" style={right}>
-          <img style={big} src={this.props.weatherImg} />
+          <img style={big} src={imageURL}/>
         </div>
       </div>
     );

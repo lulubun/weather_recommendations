@@ -70,10 +70,11 @@ export const setWeekTxt = (day1txt, day2txt, day3txt, day4txt, day5txt, day6txt,
 })
 
 export const SET_NOW = 'SET_NOW';
-export const setNow = (now, nowFeels) => ({
+export const setNow = (now, nowFeels, nowIcon) => ({
   type: SET_NOW,
   now,
-  nowFeels
+  nowFeels,
+  nowIcon
 })
 
 export const SET_IMG = 'SET_IMG';
@@ -101,6 +102,7 @@ export function getWeather(zip) {
       console.log('hr:', data);
       let now = data.hourly_forecast[0].temp.english;
       let nowFeels = data.hourly_forecast[0].feelslike.english;
+      let nowIcon = data.hourly_forecast[0].icon_url;
       let newLow = 100;
       let lowArr = [];
       let num = data.hourly_forecast[0].FCTTIME.hour;
@@ -145,7 +147,7 @@ export function getWeather(zip) {
         }
       }
       dispatch(setLow(newLow))
-      dispatch(setNow(now, nowFeels));
+      dispatch(setNow(now, nowFeels, nowIcon));
     })
     .catch(ex => console.log(ex))
 
@@ -153,7 +155,6 @@ export function getWeather(zip) {
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
-      console.log('10:', data);
       let jour = '';
       let time = new Date();
       let hour = time.getHours();
@@ -163,13 +164,18 @@ export function getWeather(zip) {
       if (hour > 18) {
         jour = data.forecast.txt_forecast.forecastday[2].title;
         newRain = data.forecast.txt_forecast.forecastday[2].pop;
-        icon = data.forecast.txt_forecast.forecastday[2].icon_url;
         newHigh = data.forecast.simpleforecast.forecastday[1].high.fahrenheit;
       } else {
         jour = data.forecast.txt_forecast.forecastday[0].title;
         newRain = data.forecast.txt_forecast.forecastday[0].pop;
-        icon = data.forecast.txt_forecast.forecastday[0].icon_url;
         newHigh = data.forecast.simpleforecast.forecastday[1].high.fahrenheit;
+      }
+      if (newRain > 39) {
+        icon = require("../icons/021-rain.png");
+      } else if (newHigh > 79) {
+        icon = require("../icons/021-summer.png");
+      } else {
+        icon = require("../icons/thermometer.png");
       }
       const dayFirst = data.forecast.txt_forecast.forecastday[2].title;
       const day1txt = data.forecast.txt_forecast.forecastday[2].fcttext;
@@ -208,7 +214,6 @@ export function getWeather(zip) {
         newWarn += data.alerts[2]
       }}
       dispatch(setWarn(newWarn));
-      console.log('now');
     })
   }
 };

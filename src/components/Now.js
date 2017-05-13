@@ -7,10 +7,22 @@ import Divider from 'material-ui/Divider';
 export class Now extends React.Component {
   render() {
     const text = {
-      'paddingLeft': '10px'
+      position: 'relative',
+      paddingLeft: '10px',
+      marginLeft: '10%',
+      top: '10'
+    }
+    const iconStyle = {
+      position: 'absolute',
+      top: '50px',
+      left: '30',
+      height: '80px'
     }
     return (
       <div className="now" className="Weather">
+        <div>
+          <img style={iconStyle} src={this.props.icon} />
+        </div>
         <Paper zDepth={2} style={text}>
           <p>{this.props.placeCi}, {this.props.placeSt}</p>
           <Divider />
@@ -32,6 +44,7 @@ const mapStateToProps = (state, props) => ({
   now: state.weatherState.rightNow,
   feelsNow: state.weatherState.rightNowFeels,
   dayRain: state.weatherState.rain,
+  icon: state.weatherState.rightNowIcon
 });
 
 export default connect(mapStateToProps)(Now);
