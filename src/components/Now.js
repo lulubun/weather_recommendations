@@ -3,6 +3,8 @@ import '../index.css'
 import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
+import MediaQuery from 'react-responsive';
+
 
 export class Now extends React.Component {
   render() {
@@ -18,22 +20,45 @@ export class Now extends React.Component {
       left: '30',
       height: '80px'
     }
+    const miniText = {
+      position: 'relative',
+      paddingLeft: '10px',
+      top: '10'
+    }
     return (
-      <div className="now" className="Weather">
-        <div>
-          <img style={iconStyle} src={this.props.icon} />
+      <div>
+      <MediaQuery query='(min-device-width: 750px)'>
+        <div className="now" className="Weather">
+          <div>
+            <img style={iconStyle} src={this.props.icon} />
+          </div>
+          <Paper zDepth={2} style={text}>
+            <p>{this.props.placeCi}, {this.props.placeSt}</p>
+            <Divider />
+            <p> Temperature right now: {this.props.now}°</p>
+            <Divider />
+            <p> Feels like: {this.props.feelsNow}°</p>
+            <Divider />
+            <p> Chance of rain: {this.props.dayRain}%</p>
+            <Divider />
+        </Paper>
         </div>
-        <Paper zDepth={2} style={text}>
-          <p>{this.props.placeCi}, {this.props.placeSt}</p>
-          <Divider />
-          <p> Temperature right now: {this.props.now}°</p>
-          <Divider />
-          <p> Feels like: {this.props.feelsNow}°</p>
-          <Divider />
-          <p> Chance of rain: {this.props.dayRain}%</p>
-          <Divider />
-      </Paper>
-      </div>
+      </MediaQuery>
+      <MediaQuery query='(max-device-width: 749px)'>
+        <div className="now" className="Weather">
+          <Paper zDepth={2} style={miniText}>
+            <p>{this.props.placeCi}, {this.props.placeSt}</p>
+            <Divider />
+            <p> Temperature right now: {this.props.now}°</p>
+            <Divider />
+            <p> Feels like: {this.props.feelsNow}°</p>
+            <Divider />
+            <p> Chance of rain: {this.props.dayRain}%</p>
+            <Divider />
+          </Paper>
+        </div>
+      </MediaQuery>
+    </div>
     );
   }
 }

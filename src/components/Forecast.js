@@ -3,6 +3,7 @@ import '../index.css'
 import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
+import MediaQuery from 'react-responsive';
 
 export class Forecast extends React.Component {
   render() {
@@ -23,21 +24,40 @@ export class Forecast extends React.Component {
     }
     let imageURL = this.props.weatherImg;
     return (
-      <div className="forecast" style={left}>
-        <Paper zDepth={2}>
-          <p>{this.props.placeCi}, {this.props.placeSt}</p>
-          <Divider />
-          <p>{this.props.thisDay}'s High between 9am - 6pm: {this.props.dayHigh}°F </p>
-          <Divider />
-          <p>{this.props.thisDay}'s Low between 9am - 6pm: {this.props.dayLow}°F </p>
-          <Divider />
-          <p> Chance of rain: {this.props.dayRain}%</p>
-          <Divider />
-          <p id="alert"> Weather Alerts:  {this.props.dayWarnings}</p>
-        </Paper>
-        <div className="image" style={right}>
-          <img style={big} src={imageURL}/>
+      <div>
+      <MediaQuery query='(min-device-width: 1224px)'>
+        <div className="forecast" style={left}>
+          <Paper zDepth={2}>
+            <p>{this.props.placeCi}, {this.props.placeSt}</p>
+            <Divider />
+            <p>{this.props.thisDay}'s High between 9am - 6pm: {this.props.dayHigh}°F </p>
+            <Divider />
+            <p>{this.props.thisDay}'s Low between 9am - 6pm: {this.props.dayLow}°F </p>
+            <Divider />
+            <p> Chance of rain: {this.props.dayRain}%</p>
+            <Divider />
+            <p id="alert"> Weather Alerts:  {this.props.dayWarnings}</p>
+          </Paper>
+          <div className="image" style={right}>
+            <img style={big} src={imageURL}/>
+          </div>
         </div>
+      </MediaQuery>
+      <MediaQuery query='(max-device-width: 1224px)'>
+        <div className="forecast">
+          <Paper zDepth={2} style={{textAlign: 'center'}}>
+            <p>{this.props.placeCi}, {this.props.placeSt}</p>
+            <Divider />
+            <p>{this.props.thisDay}'s High between 9am - 6pm: {this.props.dayHigh}°F </p>
+            <Divider />
+            <p>{this.props.thisDay}'s Low between 9am - 6pm: {this.props.dayLow}°F </p>
+            <Divider />
+            <p> Chance of rain: {this.props.dayRain}%</p>
+            <Divider />
+            <p id="alert"> Weather Alerts:  {this.props.dayWarnings}</p>
+          </Paper>
+        </div>
+      </MediaQuery>
       </div>
     );
   }
