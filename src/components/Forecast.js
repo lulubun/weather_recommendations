@@ -25,7 +25,7 @@ export class Forecast extends React.Component {
     let imageURL = this.props.weatherImg;
     return (
       <div>
-      <MediaQuery query='(min-device-width: 1224px)'>
+      <MediaQuery query='(min-device-width: 1000px)'>
         <div className="forecast" style={left}>
           <Paper zDepth={2}>
             <p>{this.props.placeCi}, {this.props.placeSt}</p>
@@ -43,7 +43,7 @@ export class Forecast extends React.Component {
           </div>
         </div>
       </MediaQuery>
-      <MediaQuery query='(max-device-width: 1224px)'>
+      <MediaQuery query='(max-device-width: 999px)'>
         <div className="forecast">
           <Paper zDepth={2} style={{textAlign: 'center'}}>
             <p>{this.props.placeCi}, {this.props.placeSt}</p>
