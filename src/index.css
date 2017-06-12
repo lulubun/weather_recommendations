@@ -18,7 +18,7 @@ body {
   position: relative;
   padding-left: 5px;
   padding-right: 5px;
-  padding-top: 20px;
+  padding-top: 150px;
 }
 
 .explain {
@@ -100,27 +100,24 @@ li {
   line-height: 2;
 }
 
+.topBox {
+
+}
+
 .Welcome {
-  background-image: url("./blue_storm.jpg");
+  background-color: #00BCD4;
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
   color: white;
-  height: 600px;
+  height: 100px;
   width: 100%;
-   text-shadow:
-       -1px -1px 0 #000,
-       1px -1px 0 #000,
-       -1px 1px 0 #000,
-       1px 1px 0 #000;
- -webkit-font-smoothing: antialiased;
-
 }
 
 #opener {
-  font-size: 150px;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  font-size: 75px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #hours {
@@ -201,7 +198,7 @@ li {
     padding: 0;
   }
 
-  .Welcome {
+  /*.Welcome {
     background-image: url("./blue_storm.jpg");
     padding-top: 50px;
     padding-bottom: 50px;
@@ -216,7 +213,7 @@ li {
          1px 1px 0 #000;
    -webkit-font-smoothing: antialiased;
 
-  }
+  }*/
 }
 
 .col {

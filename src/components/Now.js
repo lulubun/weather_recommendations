@@ -11,7 +11,6 @@ export class Now extends React.Component {
     const text = {
       position: 'relative',
       paddingLeft: '10px',
-      marginLeft: '10%',
       top: '10'
     }
     const iconStyle = {
@@ -29,9 +28,6 @@ export class Now extends React.Component {
       <div>
       <MediaQuery query='(min-device-width: 750px)'>
         <div className="now" className="Weather">
-          <div>
-            <img style={iconStyle} src={this.props.icon} />
-          </div>
           <Paper zDepth={2} style={text}>
             <p>{this.props.placeCi}, {this.props.placeSt}</p>
             <Divider />
@@ -41,7 +37,7 @@ export class Now extends React.Component {
             <Divider />
             <p> Chance of rain: {this.props.dayRain}%</p>
             <Divider />
-        </Paper>
+          </Paper>
         </div>
       </MediaQuery>
       <MediaQuery query='(max-device-width: 749px)'>
