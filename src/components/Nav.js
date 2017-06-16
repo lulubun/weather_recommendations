@@ -21,7 +21,7 @@ const AllTabs = () => (
         <Week />
       </div>
     </Tab>
-    <Tab label="Weather Right Now" >
+    <Tab label="Right Now" >
       <div>
         <Now />
       </div>
