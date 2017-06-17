@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router';
-import '../index.css';
+// import '../index.css';
 import FlatButton from 'material-ui/FlatButton';
 import Nav from './Nav'
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+
 
 
 export class Welcome extends React.Component {
@@ -28,7 +29,6 @@ export class Welcome extends React.Component {
         </div>
       </div>
         <Nav />
-
       </div>
     )
   }

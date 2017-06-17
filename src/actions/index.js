@@ -36,8 +36,9 @@ export const setWarn = (newWarn) => ({
 })
 
 export const SET_RECOMMENDATIONS = 'SET_RECOMMENDATIONS';
-export const setRecommendations = () => ({
-  type: SET_RECOMMENDATIONS
+export const setRecommendations = (newRec) => ({
+  type: SET_RECOMMENDATIONS,
+  newRec
 });
 
 export const SET_SEA = 'SET_SEA';

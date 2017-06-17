@@ -177,7 +177,7 @@ li {
   border-radius: 5px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
   #opener {
     font-size: 30px;
   }
@@ -186,7 +186,7 @@ li {
     font-size: 10px;
   }
 
-  .flex-item{
+  .flex-item {
     height: 375px;
     border-radius: 0;
   }
@@ -205,22 +205,13 @@ li {
     padding: 0;
   }
 
-  /*.Welcome {
-    background-image: url("./blue_storm.jpg");
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-align: center;
-    color: white;
-    height: 200px;
-    width: 100%;
-     text-shadow:
-         -1px -1px 0 #000,
-         1px -1px 0 #000,
-         -1px 1px 0 #000,
-         1px 1px 0 #000;
-   -webkit-font-smoothing: antialiased;
+  .icon {
+    display: none;
+  }
 
-  }*/
+  .explain {
+    display: none;
+  }
 }
 
 .col {

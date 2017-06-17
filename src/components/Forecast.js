@@ -4,25 +4,48 @@ import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import MediaQuery from 'react-responsive';
+import * as actions from '../actions/index';
 
 export class Forecast extends React.Component {
+  componentDidUpdate() {
+    this.props.recommendStuff()
+  };
+
   render() {
     const right = {
-      right: '0',
-      bottom: '40px',
+      width: '37%',
+      right: 0,
+      top: 0,
+      // bottom: '40px',
       position: 'absolute',
-      paddingRight: '12%',
-      paddingLeft: '10%'
+      // // paddingLeft: '20%'
+      // maxWidth: '40%',
+      // float: 'right',
+      paddingTop: '10%',
+      paddingRight: '5%'
     }
     const left = {
-      maxWidth: '70%'
+      width: '60%'
     }
     const big = {
-      height: '150px',
-      position: 'relative',
-      top: '30px'
+      height: '130px',
+      paddingLeft: '40%'
     }
+
+    const recStyle = {
+      // color: 'black',
+      marginLeft: '8%',
+      // paddingTop: '25px',
+      // bottom: 0,
+      textAlign: 'center'
+    }
+
+    const shrink = {
+      fontSize: '0.75em'
+    }
+
     let imageURL = this.props.weatherImg;
+    console.log(this.props.dayRecommendations);
     return (
       <div>
       <MediaQuery query='(min-device-width: 1000px)'>
@@ -40,12 +63,13 @@ export class Forecast extends React.Component {
           </Paper>
           <div className="image" style={right}>
             <img style={big} src={imageURL}/>
+            <p style={recStyle}>{this.props.dayRecommendations}</p>
           </div>
         </div>
       </MediaQuery>
       <MediaQuery query='(max-device-width: 999px)'>
         <div className="forecast">
-          <Paper zDepth={2} style={{textAlign: 'center'}}>
+          <Paper zDepth={2} style={{paddingLeft: '15px', paddingRight: '15px', textIndent: '0.2em'}}>
             <p>{this.props.placeCi}, {this.props.placeSt}</p>
             <Divider />
             <p>{this.props.thisDay}'s High between 9am - 6pm: {this.props.dayHigh}°F </p>
@@ -55,6 +79,8 @@ export class Forecast extends React.Component {
             <p> Chance of rain: {this.props.dayRain}%</p>
             <Divider />
             <p id="alert"> Weather Alerts:  {this.props.dayWarnings}</p>
+            <Divider />
+            <p style={shrink}>{this.props.dayRecommendations}</p>
           </Paper>
         </div>
       </MediaQuery>
@@ -71,7 +97,12 @@ const mapStateToProps = (state, props) => ({
   dayLow: state.weatherState.low,
   dayRain: state.weatherState.rain,
   dayWarnings: state.weatherState.weatherAlerts,
-  weatherImg: state.weatherState.img
+  weatherImg: state.weatherState.img,
+  dayRecommendations: state.weatherState.recommendations
 });
 
-export default connect(mapStateToProps)(Forecast);
+const mapDispatchToProps = (dispatch) => ({
+  recommendStuff: () => dispatch(actions.setRecommendations())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Forecast);
