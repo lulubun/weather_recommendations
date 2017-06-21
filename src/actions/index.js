@@ -85,8 +85,40 @@ export const setImg = (icon) => ({
 })
 
 export function getWeather(zip) {
+  var sendAPI = zip;
+  if (zip != 'autoip') {
+    if (isNaN(zip)) {
+      if (zip.includes(",")) {
+        var lengthStr = zip.length;
+        console.log(lengthStr);
+        var col = lengthStr - 4;
+        var col2 = lengthStr - 2;
+        var city = zip.slice(0, col);
+        if (city.includes(" ")) {
+          city = city.replace(/ /g,"_");
+          console.log(city);
+        }
+        var state = zip.slice(col2, lengthStr)
+        sendAPI = state + '/' + city;
+        console.log(sendAPI);
+      } else {
+        var lengthStr2 = zip.length;
+        console.log(lengthStr2);
+        var noCol2 = lengthStr2 - 2;
+        var preCity = zip.slice(0, noCol2);
+        var city2 = preCity.trim();
+        if (city2.includes(" ")) {
+          city = city2.replace(/ /g,"_");
+          console.log(city2);
+        }
+        var state2 = zip.slice(noCol2, lengthStr2)
+        sendAPI = state2 + '/' + city2
+        console.log(sendAPI);
+      }
+    }
+  }
   return dispatch => {
-    const zipUrl = 'https://api.wunderground.com/api/5507ba67bf70f890/geolookup/q/' + zip + '.json'
+    const zipUrl = 'https://api.wunderground.com/api/5507ba67bf70f890/geolookup/q/' + sendAPI + '.json'
     fetch(zipUrl)
     .then(response => response.json())
     .then(data => {
@@ -156,6 +188,7 @@ export function getWeather(zip) {
     fetch(urlSec)
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       let jour = '';
       let time = new Date();
       let hour = time.getHours();

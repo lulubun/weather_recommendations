@@ -45,7 +45,6 @@ export class Forecast extends React.Component {
     }
 
     let imageURL = this.props.weatherImg;
-    console.log(this.props.dayRecommendations);
     return (
       <div>
       <MediaQuery query='(min-device-width: 1000px)'>

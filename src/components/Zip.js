@@ -9,7 +9,7 @@ const style = {
 };
 
 let zipInput = ''
-let starter = 'ex 30030'
+let starter = 'ex 30030 or Decatur, GA'
 
 export class Zip extends React.Component {
   render() {

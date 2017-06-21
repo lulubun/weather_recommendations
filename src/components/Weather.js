@@ -6,7 +6,7 @@ import Forecast from './Forecast';
 
 export class Weather extends React.Component {
   componentDidMount() {
-    this.props.startingWeather(30030);
+    this.props.startingWeather('autoip');
   };
 
   render() {
@@ -21,7 +21,7 @@ export class Weather extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startingWeather: () => dispatch(actions.getWeather(30030)),
+  startingWeather: () => dispatch(actions.getWeather('autoip')),
 })
 
 export default connect(null, mapDispatchToProps)(Weather)

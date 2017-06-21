@@ -23,6 +23,10 @@ export class Week extends React.Component {
               <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.dayTroisFor}</TableRowColumn>
             </TableRow>
             <TableRow>
+              <TableRowColumn>{this.props.dayQuatre}</TableRowColumn>
+              <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.dayQuatreFor}</TableRowColumn>
+            </TableRow>
+            <TableRow>
               <TableRowColumn>{this.props.dayCinq}</TableRowColumn>
               <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{this.props.dayCinqFor}</TableRowColumn>
             </TableRow>
